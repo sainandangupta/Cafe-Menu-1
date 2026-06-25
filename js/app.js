@@ -895,7 +895,7 @@ function buildAppFooterHtml() {
           <span class="footer-brand-logo">🍽️</span>
           <span>Krishna's Cafe</span>
         </div>
-        <p class="footer-tagline">Serving freshly prepared, mouth-watering street food, delicious momos, sizzling maggi, and Chinese delicacies since 2020.</p>
+        <p class="footer-tagline">Serving freshly prepared, mouth-watering street food, delicious momos, sizzling maggi, and Chinese delicacies.</p>
         <span class="footer-veg-warning">🟢 100% Vegetarian Menu</span>
       </div>
       <div>
