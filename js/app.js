@@ -904,7 +904,6 @@ function buildAppFooterHtml() {
           <li><a href="#" onclick="event.preventDefault(); currentCategory='All'; renderMenu();">View All Menu</a></li>
           <li><a href="#" onclick="event.preventDefault(); currentCategory='Chinese'; renderMenu();">Chinese Specials</a></li>
           <li><a href="#" onclick="event.preventDefault(); currentCategory='Momos'; renderMenu();">Momo Station</a></li>
-          <li><a href="tel:+919876543210">📞 Call Us to Order</a></li>
         </ul>
       </div>
       <div>
@@ -912,7 +911,7 @@ function buildAppFooterHtml() {
         <address class="footer-contact-info">
           <div class="footer-contact-item">
             <span class="footer-contact-icon">📍</span>
-            <span>Opp. University Main Gate,<br>Sector 4, City Centre</span>
+            <span>Baba Turf,<br>Barwani</span>
           </div>
           <div class="footer-contact-item">
             <span class="footer-contact-icon">⏰</span>
