@@ -765,6 +765,26 @@ function getAverageRating(dishId) {
   };
 }
 
+/**
+ * Retrieve the list of dish IDs rated by this user.
+ */
+function getUserRatedDishes() {
+  const raw = localStorage.getItem('krishnasCafeUserRatedDishes');
+  if (raw) {
+    try { return JSON.parse(raw); } catch (_) {}
+  }
+  return {};
+}
+
+/**
+ * Mark a dish as rated by this user.
+ */
+function markDishAsRated(dishId, rating) {
+  const rated = getUserRatedDishes();
+  rated[dishId] = rating;
+  localStorage.setItem('krishnasCafeUserRatedDishes', JSON.stringify(rated));
+}
+
 // --------------- STAR RENDERING ---------------
 
 /**
@@ -1227,6 +1247,10 @@ function showDishDetail(dishId) {
     </div>`;
 
   // ── Rating Section ──
+  const userRated = getUserRatedDishes();
+  const userScore = userRated[dishId];
+  const hasRated = !!userScore;
+
   html += `
     <div class="rating-section fade-in-up" style="animation-delay:.8s">
       <h2 class="section-title">RATE THIS DISH</h2>
@@ -1234,13 +1258,25 @@ function showDishDetail(dishId) {
         ${renderStars(average, 'small')}
         <span class="avg-text">${average} / 5</span>
         <span class="rating-count">(${count} ratings)</span>
+      </div>`;
+
+  if (hasRated) {
+    html += `
+      <div class="user-rated-display" style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+        <span style="font-size:14px; font-weight:600; color:var(--color-on-surface-variant);">Your rating:</span>
+        ${renderStars(userScore, 'small')}
       </div>
+      <p class="rating-msg success" id="ratingMsg" style="margin-top:0;">You have already rated this dish.</p>`;
+  } else {
+    html += `
       <div class="interactive-stars" id="interactiveStars">
         ${[1, 2, 3, 4, 5].map(n => `<span class="rate-star" data-value="${n}">&#9734;</span>`).join('')}
       </div>
       <button class="submit-rating-btn" id="submitRatingBtn" disabled>Submit Rating</button>
-      <p class="rating-msg" id="ratingMsg"></p>
-    </div>`;
+      <p class="rating-msg" id="ratingMsg"></p>`;
+  }
+
+  html += `</div>`;
 
   // ── Back link ──
   html += `
@@ -1293,43 +1329,45 @@ function showDishDetail(dishId) {
 
   // Interactive star hover + click
   const starsContainer = document.getElementById('interactiveStars');
-  const rateStars = starsContainer.querySelectorAll('.rate-star');
-  const submitBtn = document.getElementById('submitRatingBtn');
+  if (starsContainer) {
+    const rateStars = starsContainer.querySelectorAll('.rate-star');
+    const submitBtn = document.getElementById('submitRatingBtn');
 
-  rateStars.forEach(star => {
-    // Hover: fill up to hovered star
-    star.addEventListener('mouseenter', () => {
-      const val = parseInt(star.dataset.value, 10);
-      rateStars.forEach(s => {
-        s.innerHTML = parseInt(s.dataset.value, 10) <= val ? '&#9733;' : '&#9734;';
-        s.classList.toggle('hovered', parseInt(s.dataset.value, 10) <= val);
+    rateStars.forEach(star => {
+      // Hover: fill up to hovered star
+      star.addEventListener('mouseenter', () => {
+        const val = parseInt(star.dataset.value, 10);
+        rateStars.forEach(s => {
+          s.innerHTML = parseInt(s.dataset.value, 10) <= val ? '&#9733;' : '&#9734;';
+          s.classList.toggle('hovered', parseInt(s.dataset.value, 10) <= val);
+        });
+      });
+
+      // Click: set selected rating
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.dataset.value, 10);
+        rateStars.forEach(s => {
+          const sv = parseInt(s.dataset.value, 10);
+          s.innerHTML = sv <= selectedRating ? '&#9733;' : '&#9734;';
+          s.classList.toggle('selected', sv <= selectedRating);
+        });
+        submitBtn.disabled = false;
       });
     });
 
-    // Click: set selected rating
-    star.addEventListener('click', () => {
-      selectedRating = parseInt(star.dataset.value, 10);
+    // Mouse leave: reset to selected state
+    starsContainer.addEventListener('mouseleave', () => {
       rateStars.forEach(s => {
         const sv = parseInt(s.dataset.value, 10);
         s.innerHTML = sv <= selectedRating ? '&#9733;' : '&#9734;';
+        s.classList.toggle('hovered', false);
         s.classList.toggle('selected', sv <= selectedRating);
       });
-      submitBtn.disabled = false;
     });
-  });
 
-  // Mouse leave: reset to selected state
-  starsContainer.addEventListener('mouseleave', () => {
-    rateStars.forEach(s => {
-      const sv = parseInt(s.dataset.value, 10);
-      s.innerHTML = sv <= selectedRating ? '&#9733;' : '&#9734;';
-      s.classList.toggle('hovered', false);
-      s.classList.toggle('selected', sv <= selectedRating);
-    });
-  });
-
-  // Submit rating
-  submitBtn.addEventListener('click', () => submitRating(dish.id));
+    // Submit rating
+    submitBtn.addEventListener('click', () => submitRating(dish.id));
+  }
 }
 
 // --------------- SUBMIT RATING ---------------
@@ -1341,6 +1379,13 @@ function showDishDetail(dishId) {
  */
 async function submitRating(dishId) {
   if (selectedRating < 1 || selectedRating > 5) return;
+
+  // Prevent double submissions
+  const userRated = getUserRatedDishes();
+  if (userRated[dishId]) return;
+
+  // Record this rating locally
+  markDishAsRated(dishId, selectedRating);
 
   // ── 1. Update localStorage immediately (optimistic) ────
   const ratings = getRatings();
@@ -1458,6 +1503,9 @@ function initApp() {
 
   // Fetch latest database ratings from backend
   fetchRatingsFromBackend();
+
+  // Poll for database rating updates every 1 minute (60,000 ms)
+  setInterval(fetchRatingsFromBackend, 60000);
 
   LIST_LAYOUT_QUERY.addEventListener('change', handleLayoutChange);
 }
