@@ -887,6 +887,15 @@ function labelClass(label) {
   }
 }
 
+// --------------- PRICE FORMAT HELPER ---------------
+
+function formatPrice(price) {
+  if (typeof price === 'number') {
+    return `₹${price}`;
+  }
+  return price;
+}
+
 // --------------- FOOTER HELPER ---------------
 
 function buildAppFooterHtml() {
@@ -1066,7 +1075,7 @@ function buildDishCards(list) {
           <h3 class="dish-name">${vegDot}${dish.name}</h3>
           <p class="dish-desc">${dish.description}</p>
           <div class="dish-meta">
-            <span class="dish-price">₹${dish.price}</span>
+            <span class="dish-price">${formatPrice(dish.price)}</span>
             <span class="dish-rating">${renderStars(average)} <span class="rating-count">(${count})</span></span>
           </div>
           <div class="dish-tags">
@@ -1085,7 +1094,7 @@ function buildDishCards(list) {
           <h3 class="dish-name">${vegDot}${dish.name}</h3>
           <p class="dish-desc">${dish.description}</p>
           <div class="dish-meta">
-            <span class="dish-price">₹${dish.price}</span>
+            <span class="dish-price">${formatPrice(dish.price)}</span>
             <span class="dish-rating">${renderStars(average)} <span class="rating-count">(${count})</span></span>
           </div>
           <div class="dish-tags">
@@ -1187,7 +1196,7 @@ function showDishDetail(dishId) {
   html += `<h1 class="detail-name fade-in-up" style="animation-delay:.15s">${dish.name}</h1>`;
 
   // Price
-  html += `<p class="detail-price fade-in-up" style="animation-delay:.2s">₹${dish.price}</p>`;
+  html += `<p class="detail-price fade-in-up" style="animation-delay:.2s">${formatPrice(dish.price)}</p>`;
 
   // Divider
   html += `<hr class="detail-divider fade-in-up" style="animation-delay:.25s" />`;
