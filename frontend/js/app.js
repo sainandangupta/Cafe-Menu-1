@@ -678,48 +678,51 @@ const categories = ["All", "Maggi", "French Fries", "Momos", "Sandwiches", "Chol
 // --------------- DEFAULT RATINGS ---------------
 
 const defaultRatings = {
-  "vegetable-maggie": { total: 194, count: 43 },
-  "plain-maggie": { total: 113, count: 24 },
-  "masala-maggie": { total: 141, count: 30 },
-  "double-masala-maggie": { total: 98, count: 24 },
-  "cheese-butter-maggie": { total: 101, count: 22 },
-  "plain-french-fries": { total: 154, count: 35 },
-  "peri-peri-french-fries": { total: 216, count: 48 },
-  "masala-french-fries": { total: 213, count: 52 },
-  "veg-momos": { total: 98, count: 24 },
-  "paneer-momos": { total: 152, count: 37 },
-  "cheese-corn-momos": { total: 224, count: 52 },
-  "schezwan-momos": { total: 122, count: 32 },
-  "masala-sandwich": { total: 249, count: 53 },
-  "indori-sandwich": { total: 82, count: 20 },
-  "corn-mayo-sandwich": { total: 230, count: 48 },
-  "cheese-chutney-sandwich": { total: 185, count: 43 },
-  "masala-cheese-sandwich": { total: 140, count: 36 },
-  "vegetable-sandwich": { total: 201, count: 49 },
-  "chole-bhature": { total: 78, count: 19 },
-  "punjabi-chole-bhature": { total: 163, count: 37 },
-  "kaju-pulao": { total: 254, count: 54 },
-  "paneer-pulao": { total: 184, count: 41 },
-  "veg-pulao": { total: 162, count: 36 },
-  "veg-fried-rice": { total: 238, count: 54 },
-  "corn-fried-rice": { total: 198, count: 43 },
-  "paneer-fried-rice": { total: 146, count: 34 },
-  "schezwan-fried-rice": { total: 176, count: 43 },
-  "manchurian-fried-rice": { total: 127, count: 27 },
-  "noodles-with-rice": { total: 160, count: 42 },
-  "veg-hakka-noodles": { total: 197, count: 48 },
-  "chinese-bhel": { total: 254, count: 53 },
-  "veg-noodles-spicy": { total: 87, count: 19 },
-  "chilli-garlic-noodles": { total: 180, count: 40 },
-  "manchurian-noodles": { total: 185, count: 42 },
-  "honey-chilli-potato": { total: 168, count: 39 },
-  "manchurian-dry": { total: 116, count: 27 },
-  "manchurian-gravy": { total: 92, count: 20 },
-  "chilli-paneer": { total: 158, count: 36 },
-  "pav-bhaji": { total: 188, count: 42 },
+  "vegetable-maggie":       { total: 0, count: 0 },
+  "plain-maggie":           { total: 0, count: 0 },
+  "masala-maggie":          { total: 0, count: 0 },
+  "double-masala-maggie":   { total: 0, count: 0 },
+  "cheese-butter-maggie":   { total: 0, count: 0 },
+  "plain-french-fries":     { total: 0, count: 0 },
+  "peri-peri-french-fries": { total: 0, count: 0 },
+  "masala-french-fries":    { total: 0, count: 0 },
+  "veg-momos":              { total: 0, count: 0 },
+  "paneer-momos":           { total: 0, count: 0 },
+  "cheese-corn-momos":      { total: 0, count: 0 },
+  "schezwan-momos":         { total: 0, count: 0 },
+  "masala-sandwich":        { total: 0, count: 0 },
+  "indori-sandwich":        { total: 0, count: 0 },
+  "corn-mayo-sandwich":     { total: 0, count: 0 },
+  "cheese-chutney-sandwich":{ total: 0, count: 0 },
+  "masala-cheese-sandwich": { total: 0, count: 0 },
+  "vegetable-sandwich":     { total: 0, count: 0 },
+  "chole-bhature":          { total: 0, count: 0 },
+  "punjabi-chole-bhature":  { total: 0, count: 0 },
+  "kaju-pulao":             { total: 0, count: 0 },
+  "paneer-pulao":           { total: 0, count: 0 },
+  "veg-pulao":              { total: 0, count: 0 },
+  "veg-fried-rice":         { total: 0, count: 0 },
+  "corn-fried-rice":        { total: 0, count: 0 },
+  "paneer-fried-rice":      { total: 0, count: 0 },
+  "schezwan-fried-rice":    { total: 0, count: 0 },
+  "manchurian-fried-rice":  { total: 0, count: 0 },
+  "noodles-with-rice":      { total: 0, count: 0 },
+  "veg-hakka-noodles":      { total: 0, count: 0 },
+  "chinese-bhel":           { total: 0, count: 0 },
+  "veg-noodles-spicy":      { total: 0, count: 0 },
+  "chilli-garlic-noodles":  { total: 0, count: 0 },
+  "manchurian-noodles":     { total: 0, count: 0 },
+  "honey-chilli-potato":    { total: 0, count: 0 },
+  "manchurian-dry":         { total: 0, count: 0 },
+  "manchurian-gravy":       { total: 0, count: 0 },
+  "chilli-paneer":          { total: 0, count: 0 },
+  "pav-bhaji":              { total: 0, count: 0 },
 };
 
 // --------------- APP STATE ---------------
+
+/** Backend URL — set in js/config.js (update after Render deployment) */
+const BACKEND_URL = (typeof CONFIG !== 'undefined') ? CONFIG.BACKEND_URL : 'http://localhost:3001';
 
 let currentView = 'menu';       // 'menu' | 'detail'
 let currentCategory = 'All';
@@ -907,16 +910,13 @@ function buildAppFooterHtml() {
         </ul>
       </div>
       <div>
-        <h3 class="footer-section-title">Contact & Timing</h3>
+        <h3 class="footer-section-title">Contact</h3>
         <address class="footer-contact-info">
           <div class="footer-contact-item">
             <span class="footer-contact-icon">📍</span>
             <span>Baba Turf,<br>Barwani</span>
           </div>
-          <div class="footer-contact-item">
-            <span class="footer-contact-icon">⏰</span>
-            <span>Open Daily:<br>11:00 AM — 11:00 PM</span>
-          </div>
+
         </address>
       </div>
     </div>
@@ -1325,17 +1325,22 @@ function showDishDetail(dishId) {
 
 // --------------- SUBMIT RATING ---------------
 
-function submitRating(dishId) {
+/**
+ * Persist a rating for `dishId` to both:
+ *   1. localStorage  (instant UI update, works offline)
+ *   2. Backend REST API  (persistent server-side storage)
+ */
+async function submitRating(dishId) {
   if (selectedRating < 1 || selectedRating > 5) return;
 
+  // ── 1. Update localStorage immediately (optimistic) ────
   const ratings = getRatings();
   if (!ratings[dishId]) ratings[dishId] = { total: 0, count: 0 };
   ratings[dishId].total += selectedRating;
   ratings[dishId].count += 1;
-
   localStorage.setItem('krishnasCafeRatings', JSON.stringify(ratings));
 
-  // Update display
+  // ── 2. Update the on-screen average ────────────────────
   const { average, count } = getAverageRating(dishId);
   const avgSection = document.querySelector('.current-avg');
   if (avgSection) {
@@ -1353,11 +1358,29 @@ function submitRating(dishId) {
     msg.classList.add('success');
   }
 
-  // Disable submit
+  // Disable submit button
   const btn = document.getElementById('submitRatingBtn');
   if (btn) {
     btn.disabled = true;
     btn.textContent = 'Rating Submitted ✓';
+  }
+
+  // ── 3. POST to backend (non-blocking, best-effort) ─────
+  try {
+    const response = await fetch(`${BACKEND_URL}/api/ratings/${dishId}`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ stars: selectedRating }),
+    });
+    if (!response.ok) {
+      console.warn(`Backend rating save failed (${response.status}):`, await response.text());
+    } else {
+      const data = await response.json();
+      console.log('Rating saved to backend:', data);
+    }
+  } catch (err) {
+    // Server offline — localStorage already saved it locally
+    console.warn('Could not reach ratings backend (offline mode):', err.message);
   }
 }
 
@@ -1377,14 +1400,55 @@ function handleLayoutChange() {
 
 // --------------- INIT ---------------
 
+async function fetchRatingsFromBackend() {
+  try {
+    const response = await fetch(`${BACKEND_URL}/api/ratings`);
+    if (response.ok) {
+      const serverRatings = await response.json();
+      const ratings = getRatings();
+      let updated = false;
+
+      for (const dishId of Object.keys(defaultRatings)) {
+        if (serverRatings[dishId]) {
+          const sTotal = serverRatings[dishId].total;
+          const sCount = serverRatings[dishId].count;
+          if (!ratings[dishId] || ratings[dishId].total !== sTotal || ratings[dishId].count !== sCount) {
+            ratings[dishId] = { total: sTotal, count: sCount };
+            updated = true;
+          }
+        }
+      }
+
+      if (updated) {
+        localStorage.setItem('krishnasCafeRatings', JSON.stringify(ratings));
+        if (currentView === 'menu') {
+          renderMenu();
+        } else if (currentView === 'detail' && currentDishId) {
+          showDishDetail(currentDishId);
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Could not fetch ratings from backend:', err.message);
+  }
+}
+
 function initApp() {
-  // Seed ratings if needed
-  if (!localStorage.getItem('krishnasCafeRatings')) {
+  // Version stamp — bump this string whenever you want to force a ratings reset
+  const RATINGS_VERSION = 'v2-zeroed';
+  const storedVersion   = localStorage.getItem('krishnasCafeRatingsVersion');
+
+  if (storedVersion !== RATINGS_VERSION) {
+    // New version detected — wipe old ratings and seed fresh zeros
     localStorage.setItem('krishnasCafeRatings', JSON.stringify(defaultRatings));
+    localStorage.setItem('krishnasCafeRatingsVersion', RATINGS_VERSION);
   }
 
   // Initial render
   renderMenu();
+
+  // Fetch latest database ratings from backend
+  fetchRatingsFromBackend();
 
   LIST_LAYOUT_QUERY.addEventListener('change', handleLayoutChange);
 }
