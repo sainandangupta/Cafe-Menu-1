@@ -146,7 +146,7 @@ const dishes = [
     id: "veg-momos",
     name: "Veg Momos",
     category: "Momos",
-    price: 100,
+    price: "Steam ₹100 / Fried ₹110",
     description: "Steamed vegetable momos with spicy chutney.",
     detailDescription: "Soft steamed dumplings filled with seasoned vegetables, served with spicy red chutney and mayo. Available steamed (₹100) or fried (₹110).",
     image: "images/veg_momos.png",
@@ -163,7 +163,7 @@ const dishes = [
     id: "paneer-momos",
     name: "Paneer Momos",
     category: "Momos",
-    price: 130,
+    price: "Steam ₹130 / Fried ₹140",
     description: "Momos filled with seasoned paneer crumble.",
     detailDescription: "Juicy paneer-filled momos, steamed or fried to your liking. Steamed ₹130 / Fried ₹140.",
     image: "images/paneer_momos.png",
@@ -180,7 +180,7 @@ const dishes = [
     id: "cheese-corn-momos",
     name: "Cheese Corn Momos",
     category: "Momos",
-    price: 140,
+    price: "Steam ₹140 / Fried ₹150",
     description: "Cheesy corn filling in soft steamed momos.",
     detailDescription: "Creamy cheese and sweet corn filling in delicate steamed wrappers. Steamed only.",
     image: "images/cheese_corn_momos.png",
@@ -197,7 +197,7 @@ const dishes = [
     id: "schezwan-momos",
     name: "Schezwan Momos",
     category: "Momos",
-    price: 140,
+    price: "Steam ₹140 / Fried ₹150",
     description: "Momos tossed in fiery schezwan sauce.",
     detailDescription: "Momos drenched in bold schezwan sauce for extra heat. Steamed only.",
     image: "images/schezwan_momos.png",
@@ -678,45 +678,45 @@ const categories = ["All", "Maggi", "French Fries", "Momos", "Sandwiches", "Chol
 // --------------- DEFAULT RATINGS ---------------
 
 const defaultRatings = {
-  "vegetable-maggie":       { total: 0, count: 0 },
-  "plain-maggie":           { total: 0, count: 0 },
-  "masala-maggie":          { total: 0, count: 0 },
-  "double-masala-maggie":   { total: 0, count: 0 },
-  "cheese-butter-maggie":   { total: 0, count: 0 },
-  "plain-french-fries":     { total: 0, count: 0 },
+  "vegetable-maggie": { total: 0, count: 0 },
+  "plain-maggie": { total: 0, count: 0 },
+  "masala-maggie": { total: 0, count: 0 },
+  "double-masala-maggie": { total: 0, count: 0 },
+  "cheese-butter-maggie": { total: 0, count: 0 },
+  "plain-french-fries": { total: 0, count: 0 },
   "peri-peri-french-fries": { total: 0, count: 0 },
-  "masala-french-fries":    { total: 0, count: 0 },
-  "veg-momos":              { total: 0, count: 0 },
-  "paneer-momos":           { total: 0, count: 0 },
-  "cheese-corn-momos":      { total: 0, count: 0 },
-  "schezwan-momos":         { total: 0, count: 0 },
-  "masala-sandwich":        { total: 0, count: 0 },
-  "indori-sandwich":        { total: 0, count: 0 },
-  "corn-mayo-sandwich":     { total: 0, count: 0 },
-  "cheese-chutney-sandwich":{ total: 0, count: 0 },
+  "masala-french-fries": { total: 0, count: 0 },
+  "veg-momos": { total: 0, count: 0 },
+  "paneer-momos": { total: 0, count: 0 },
+  "cheese-corn-momos": { total: 0, count: 0 },
+  "schezwan-momos": { total: 0, count: 0 },
+  "masala-sandwich": { total: 0, count: 0 },
+  "indori-sandwich": { total: 0, count: 0 },
+  "corn-mayo-sandwich": { total: 0, count: 0 },
+  "cheese-chutney-sandwich": { total: 0, count: 0 },
   "masala-cheese-sandwich": { total: 0, count: 0 },
-  "vegetable-sandwich":     { total: 0, count: 0 },
-  "chole-bhature":          { total: 0, count: 0 },
-  "punjabi-chole-bhature":  { total: 0, count: 0 },
-  "kaju-pulao":             { total: 0, count: 0 },
-  "paneer-pulao":           { total: 0, count: 0 },
-  "veg-pulao":              { total: 0, count: 0 },
-  "veg-fried-rice":         { total: 0, count: 0 },
-  "corn-fried-rice":        { total: 0, count: 0 },
-  "paneer-fried-rice":      { total: 0, count: 0 },
-  "schezwan-fried-rice":    { total: 0, count: 0 },
-  "manchurian-fried-rice":  { total: 0, count: 0 },
-  "noodles-with-rice":      { total: 0, count: 0 },
-  "veg-hakka-noodles":      { total: 0, count: 0 },
-  "chinese-bhel":           { total: 0, count: 0 },
-  "veg-noodles-spicy":      { total: 0, count: 0 },
-  "chilli-garlic-noodles":  { total: 0, count: 0 },
-  "manchurian-noodles":     { total: 0, count: 0 },
-  "honey-chilli-potato":    { total: 0, count: 0 },
-  "manchurian-dry":         { total: 0, count: 0 },
-  "manchurian-gravy":       { total: 0, count: 0 },
-  "chilli-paneer":          { total: 0, count: 0 },
-  "pav-bhaji":              { total: 0, count: 0 },
+  "vegetable-sandwich": { total: 0, count: 0 },
+  "chole-bhature": { total: 0, count: 0 },
+  "punjabi-chole-bhature": { total: 0, count: 0 },
+  "kaju-pulao": { total: 0, count: 0 },
+  "paneer-pulao": { total: 0, count: 0 },
+  "veg-pulao": { total: 0, count: 0 },
+  "veg-fried-rice": { total: 0, count: 0 },
+  "corn-fried-rice": { total: 0, count: 0 },
+  "paneer-fried-rice": { total: 0, count: 0 },
+  "schezwan-fried-rice": { total: 0, count: 0 },
+  "manchurian-fried-rice": { total: 0, count: 0 },
+  "noodles-with-rice": { total: 0, count: 0 },
+  "veg-hakka-noodles": { total: 0, count: 0 },
+  "chinese-bhel": { total: 0, count: 0 },
+  "veg-noodles-spicy": { total: 0, count: 0 },
+  "chilli-garlic-noodles": { total: 0, count: 0 },
+  "manchurian-noodles": { total: 0, count: 0 },
+  "honey-chilli-potato": { total: 0, count: 0 },
+  "manchurian-dry": { total: 0, count: 0 },
+  "manchurian-gravy": { total: 0, count: 0 },
+  "chilli-paneer": { total: 0, count: 0 },
+  "pav-bhaji": { total: 0, count: 0 },
 };
 
 // --------------- APP STATE ---------------
@@ -879,11 +879,11 @@ function labelClass(label) {
   if (!label) return '';
   switch (label) {
     case 'SIGNATURE DISH': return 'label-signature';
-    case 'CHEF SPECIAL':   return 'label-chef';
-    case 'NEW':            return 'label-new';
-    case 'POPULAR':        return 'label-popular';
-    case 'HEALTHY':        return 'label-healthy';
-    default:               return 'label-default';
+    case 'CHEF SPECIAL': return 'label-chef';
+    case 'NEW': return 'label-new';
+    case 'POPULAR': return 'label-popular';
+    case 'HEALTHY': return 'label-healthy';
+    default: return 'label-default';
   }
 }
 
@@ -1377,9 +1377,9 @@ async function submitRating(dishId) {
   // ── 3. POST to backend (non-blocking, best-effort) ─────
   try {
     const response = await fetch(`${BACKEND_URL}/api/ratings/${dishId}`, {
-      method:  'POST',
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ stars: selectedRating }),
+      body: JSON.stringify({ stars: selectedRating }),
     });
     if (!response.ok) {
       console.warn(`Backend rating save failed (${response.status}):`, await response.text());
@@ -1445,7 +1445,7 @@ async function fetchRatingsFromBackend() {
 function initApp() {
   // Version stamp — bump this string whenever you want to force a ratings reset
   const RATINGS_VERSION = 'v2-zeroed';
-  const storedVersion   = localStorage.getItem('krishnasCafeRatingsVersion');
+  const storedVersion = localStorage.getItem('krishnasCafeRatingsVersion');
 
   if (storedVersion !== RATINGS_VERSION) {
     // New version detected — wipe old ratings and seed fresh zeros
