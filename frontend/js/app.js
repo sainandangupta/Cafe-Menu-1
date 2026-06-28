@@ -1463,13 +1463,11 @@ async function fetchRatingsFromBackend() {
       let updated = false;
 
       for (const dishId of Object.keys(defaultRatings)) {
-        if (serverRatings[dishId]) {
-          const sTotal = serverRatings[dishId].total;
-          const sCount = serverRatings[dishId].count;
-          if (!ratings[dishId] || ratings[dishId].total !== sTotal || ratings[dishId].count !== sCount) {
-            ratings[dishId] = { total: sTotal, count: sCount };
-            updated = true;
-          }
+        const sTotal = serverRatings[dishId] ? serverRatings[dishId].total : 0;
+        const sCount = serverRatings[dishId] ? serverRatings[dishId].count : 0;
+        if (!ratings[dishId] || ratings[dishId].total !== sTotal || ratings[dishId].count !== sCount) {
+          ratings[dishId] = { total: sTotal, count: sCount };
+          updated = true;
         }
       }
 
