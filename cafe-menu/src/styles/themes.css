@@ -1,0 +1,157 @@
+/* ========================================
+   CAFE DIGITAL MENU — THEME SYSTEM
+   Three distinct visual themes that swap
+   via CSS custom properties on a wrapper.
+   ======================================== */
+
+/* BASE THEME TRANSITION */
+[data-theme] {
+  transition: 
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── FOOD THEME ─── */
+[data-theme="food"] {
+  --theme-primary: #D4451A;
+  --theme-primary-hover: #BF360C;
+  --theme-primary-light: #E8740C;
+  --theme-secondary: #F5A623;
+  --theme-bg: #FFF8F0;
+  --theme-surface: #FFFFFF;
+  --theme-card: #FFFAF5;
+  --theme-card-border: #FEE8D6;
+  --theme-text: #2D1810;
+  --theme-text-secondary: #7C4A32;
+  --theme-accent: #E8740C;
+  --theme-gradient-start: #FFF3E0;
+  --theme-gradient-end: #FFE0B2;
+  --theme-badge-bg: #FFF3E0;
+  --theme-badge-text: #D4451A;
+  --theme-nav-active: #D4451A;
+  --theme-nav-indicator: #D4451A;
+  --theme-pill-bg: #FFEAD9;
+  --theme-pill-text: #7C4A32;
+  --theme-pill-active-bg: #D4451A;
+  --theme-pill-active-text: #FFFFFF;
+  --theme-shimmer: rgba(212, 69, 26, 0.08);
+  --theme-shadow: 0 10px 25px -5px rgba(212, 69, 26, 0.12), 0 8px 10px -6px rgba(212, 69, 26, 0.08);
+}
+
+/* ─── DRINKS THEME ─── */
+[data-theme="drinks"] {
+  --theme-primary: #00897B;
+  --theme-primary-hover: #00695C;
+  --theme-primary-light: #26A69A;
+  --theme-secondary: #00B4D8;
+  --theme-bg: #F0FDF4;
+  --theme-surface: #FFFFFF;
+  --theme-card: #F4FBF7;
+  --theme-card-border: #C8EAD9;
+  --theme-text: #06392D;
+  --theme-text-secondary: #1F6958;
+  --theme-accent: #00BFA5;
+  --theme-gradient-start: #E0F2F1;
+  --theme-gradient-end: #B2DFDB;
+  --theme-badge-bg: #E0F2F1;
+  --theme-badge-text: #00897B;
+  --theme-nav-active: #00897B;
+  --theme-nav-indicator: #00BFA5;
+  --theme-pill-bg: #DCF2EA;
+  --theme-pill-text: #1F6958;
+  --theme-pill-active-bg: #00897B;
+  --theme-pill-active-text: #FFFFFF;
+  --theme-shimmer: rgba(0, 137, 123, 0.08);
+  --theme-shadow: 0 10px 25px -5px rgba(0, 137, 123, 0.15), 0 8px 10px -6px rgba(0, 137, 123, 0.1);
+}
+
+/* ─── DESSERTS THEME ─── */
+[data-theme="desserts"] {
+  --theme-primary: #543310;
+  --theme-primary-hover: #3B2105;
+  --theme-primary-light: #744210;
+  --theme-secondary: #D4A373;
+  --theme-bg: #FAF5EE;
+  --theme-surface: #FFFFFF;
+  --theme-card: #FFFBF6;
+  --theme-card-border: #EEDBC8;
+  --theme-text: #331A0B;
+  --theme-text-secondary: #7A4E2D;
+  --theme-accent: #C8553D;
+  --theme-gradient-start: #EFEBE9;
+  --theme-gradient-end: #D7CCC8;
+  --theme-badge-bg: #F3E9DF;
+  --theme-badge-text: #543310;
+  --theme-nav-active: #543310;
+  --theme-nav-indicator: #D4A373;
+  --theme-pill-bg: #EDE0D4;
+  --theme-pill-text: #7A4E2D;
+  --theme-pill-active-bg: #543310;
+  --theme-pill-active-text: #FFFFFF;
+  --theme-shimmer: rgba(84, 51, 16, 0.08);
+  --theme-shadow: 0 10px 25px -5px rgba(84, 51, 16, 0.16), 0 8px 10px -6px rgba(84, 51, 16, 0.1);
+}
+
+/* ─── COFFEE & TEA LOUNGE THEME ─── */
+[data-theme="coffee_tea"] {
+  --theme-primary: #3B2922; /* ESPRESSO */
+  --theme-primary-hover: #231713; /* DARK CHOCOLATE */
+  --theme-primary-light: #5A3E33;
+  --theme-secondary: #D9B98C; /* BISCUIT */
+  --theme-bg: #F7F0E5; /* CREAM */
+  --theme-surface: #FFFFFF;
+  --theme-card: #FDFBF7;
+  --theme-card-border: #E5D5C0;
+  --theme-text: #231713; /* DARK CHOCOLATE */
+  --theme-text-secondary: #634F46;
+  --theme-accent: #87927A; /* SAGE */
+  --theme-gradient-start: #F3E9DA;
+  --theme-gradient-end: #E4D2BD;
+  --theme-badge-bg: #EDE3D4;
+  --theme-badge-text: #3B2922;
+  --theme-nav-active: #3B2922;
+  --theme-nav-indicator: #D9B98C;
+  --theme-pill-bg: #EFE6D9;
+  --theme-pill-text: #3B2922;
+  --theme-pill-active-bg: #3B2922;
+  --theme-pill-active-text: #F7F0E5;
+  --theme-shimmer: rgba(59, 41, 34, 0.08);
+  --theme-shadow: 0 12px 28px -6px rgba(59, 41, 34, 0.16), 0 8px 12px -6px rgba(59, 41, 34, 0.1);
+}
+
+/* MICRO ANIMATIONS */
+@keyframes floatUp {
+  0% { transform: translateY(100%) scale(0.8); opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(-120%) scale(1.1); opacity: 0; }
+}
+
+@keyframes steamWave {
+  0% { transform: translateY(0) scaleX(1); opacity: 0.4; }
+  50% { transform: translateY(-8px) scaleX(1.2); opacity: 0.8; }
+  100% { transform: translateY(-16px) scaleX(1); opacity: 0; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+
+@keyframes dripDown {
+  0% { height: 0px; opacity: 0.7; }
+  60% { height: 16px; opacity: 1; }
+  100% { height: 22px; opacity: 0.9; }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Hide scrollbar for clean horizontal scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,0 +1,4012 @@
+// Tasty Square & Pocket Waffle - Menu Items
+// Kept SECTIONS intact, menu items cleared for new import
+
+export interface MenuItem {
+  id: string;
+  name: string;
+  nameHindi?: string;
+  sectionId: 'food' | 'drinks' | 'desserts' | 'coffee_tea';
+  category: string;
+  price: number;
+  description: string;
+  ingredients?: string[];
+  allergens?: string[];
+  isVeg: boolean;
+  isAvailable: boolean;
+  rating: number;
+  ratingCount: number;
+  badge?: 'Bestseller' | 'Chef Special' | 'Must Try' | 'Popular' | 'Spicy' | 'Signature Brew' | 'Single Origin' | 'Bold Energy' | string;
+  image: string;
+  hasIceCreamAddon?: boolean;
+  servingSize?: string;
+  prepTime?: string;
+  packingCharge?: number;
+  origin?: string;
+  roastLevel?: string;
+  brewMethod?: string;
+  caffeineLevel?: string;
+  tastingNotes?: string[];
+  tempPreference?: 'Hot' | 'Iced' | 'Both';
+}
+
+export interface SectionMeta {
+  id: 'food' | 'drinks' | 'desserts' | 'coffee_tea';
+  name: string;
+  shortTitle: string;
+  subtitle: string;
+  icon: string;
+  tagline: string;
+  badge: string;
+  bgGradient: string;
+  coverImage: string;
+  accentColor: string;
+}
+
+export const CAFE_SETTINGS = {
+  "name": "Tasty Square & Pocket Waffle",
+  "tagline": "Fresh • Tasty • Delicious",
+  "address": "Tasty Square, Main Market, City Food Hub",
+  "phone": "+91 98765 43210",
+  "timing": "10:00 AM – 11:30 PM",
+  "upiId": "Vyapar.178829117938@hdfcbank",
+  "qrImage": "/payment-qr.jpg",
+  "packingChargeRate": 20,
+  "packingChargeNotice": "Packing charges would be extra as per menu card",
+  "rating": 4.9,
+  "totalReviews": 2450
+};
+
+export const ICE_CREAM_ADDONS = [
+  {
+    "id": "icecream-vanilla",
+    "name": "Vanilla Ice Cream Scoop",
+    "price": 30,
+    "icon": "🍨"
+  },
+  {
+    "id": "icecream-chocolate",
+    "name": "Chocolate Ice Cream Scoop",
+    "price": 40,
+    "icon": "🍫"
+  }
+];
+
+export const SECTIONS: SectionMeta[] = [
+  {
+    "id": "food",
+    "name": "Tasty Square Kitchen",
+    "shortTitle": "Food",
+    "subtitle": "Burgers, Pizzas, Sandwiches, Chinese & Meals",
+    "icon": "🍔",
+    "tagline": "Freshly Prepared • Sizzling Hot • Full of Flavor",
+    "badge": "Savory & Sizzling",
+    "bgGradient": "from-orange-500/20 via-amber-500/10 to-transparent",
+    "coverImage": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80",
+    "accentColor": "#D4451A"
+  },
+  {
+    "id": "desserts",
+    "name": "Pocket Waffle & Desserts",
+    "shortTitle": "Waffles",
+    "subtitle": "Belgian Stick Waffles, Round Waffles, Kunafa & Brownies",
+    "icon": "🧇",
+    "tagline": "Warm & Crisp • Belgian Chocolate Glazed",
+    "badge": "Sweet & Crisp",
+    "bgGradient": "from-amber-500/20 via-yellow-500/10 to-transparent",
+    "coverImage": "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=800&q=80",
+    "accentColor": "#D97706"
+  },
+  {
+    "id": "drinks",
+    "name": "Thick Shakes & Mocktails",
+    "shortTitle": "Drinks",
+    "subtitle": "Thick Shakes, Fresh Fruit Coolers & Mocktails",
+    "icon": "🥤",
+    "tagline": "Chilled • Refreshing • Pure Delight",
+    "badge": "Chilled & Fresh",
+    "bgGradient": "from-pink-500/20 via-rose-500/10 to-transparent",
+    "coverImage": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80",
+    "accentColor": "#DB2777"
+  },
+  {
+    "id": "coffee_tea",
+    "name": "Chai & Coffee Bar",
+    "shortTitle": "Tea & Coffee",
+    "subtitle": "Cutting Chai, Masala Tea, Hot & Iced Cold Coffees",
+    "icon": "☕",
+    "tagline": "Kadak Chai • Rich Espresso • Frothy Cold Coffee",
+    "badge": "Warm Sips",
+    "bgGradient": "from-amber-600/20 via-orange-500/10 to-transparent",
+    "coverImage": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
+    "accentColor": "#78350F"
+  }
+];
+
+export const MENU_ITEMS: MenuItem[] = [
+  {
+    "id": "chole-bhature",
+    "name": "Chole Bhature",
+    "sectionId": "food",
+    "category": "Chole Bhature & Pulao",
+    "price": 120,
+    "description": "Crispy golden puffed bhature served with rich spiced Punjabi chole, tangy pickle, and pickled onions.",
+    "ingredients": [
+      "Kabuli Chana",
+      "Flour Bhature",
+      "Special Masala",
+      "Pickled Onions"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 45,
+    "badge": "Bestseller",
+    "image": "/images/dishes/chole-bhature.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "punjabi-chole-bhature",
+    "name": "Punjabi Chole Bhature",
+    "sectionId": "food",
+    "category": "Chole Bhature & Pulao",
+    "price": 150,
+    "description": "Crispy golden puffed bhature served with rich spiced Punjabi chole, tangy pickle, and pickled onions.",
+    "ingredients": [
+      "Kabuli Chana",
+      "Flour Bhature",
+      "Special Masala",
+      "Pickled Onions"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 58,
+    "badge": "Chef Special",
+    "image": "/images/dishes/punjabi-chole-bhature.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "paneer-chole-bhature",
+    "name": "Paneer Chole Bhature",
+    "sectionId": "food",
+    "category": "Chole Bhature & Pulao",
+    "price": 150,
+    "description": "Crispy golden puffed bhature served with rich spiced Punjabi chole, tangy pickle, and pickled onions.",
+    "ingredients": [
+      "Kabuli Chana",
+      "Flour Bhature",
+      "Special Masala",
+      "Pickled Onions"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 71,
+    "image": "/images/dishes/paneer-chole-bhature.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "shahi-pulao",
+    "name": "Shahi Pulao",
+    "sectionId": "food",
+    "category": "Chole Bhature & Pulao",
+    "price": 200,
+    "description": "Fragrant basmati rice tossed with aromatic spices, garden-fresh vegetables, and premium toppings.",
+    "ingredients": [
+      "Basmati Rice",
+      "Pure Ghee",
+      "Saffron Spices",
+      "Fried Nuts"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 84,
+    "badge": "Must Try",
+    "image": "/images/dishes/shahi-pulao.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "paneer-pulao",
+    "name": "Paneer Pulao",
+    "sectionId": "food",
+    "category": "Chole Bhature & Pulao",
+    "price": 180,
+    "description": "Fragrant basmati rice tossed with aromatic spices, garden-fresh vegetables, and premium toppings.",
+    "ingredients": [
+      "Basmati Rice",
+      "Pure Ghee",
+      "Saffron Spices",
+      "Fried Nuts"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 97,
+    "image": "/images/dishes/paneer-pulao.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "kaju-pulao",
+    "name": "Kaju Pulao",
+    "sectionId": "food",
+    "category": "Chole Bhature & Pulao",
+    "price": 180,
+    "description": "Fragrant basmati rice tossed with aromatic spices, garden-fresh vegetables, and premium toppings.",
+    "ingredients": [
+      "Basmati Rice",
+      "Pure Ghee",
+      "Saffron Spices",
+      "Fried Nuts"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 110,
+    "image": "/images/dishes/kaju-pulao.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "veg-pulao",
+    "name": "Veg Pulao",
+    "sectionId": "food",
+    "category": "Chole Bhature & Pulao",
+    "price": 150,
+    "description": "Fragrant basmati rice tossed with aromatic spices, garden-fresh vegetables, and premium toppings.",
+    "ingredients": [
+      "Basmati Rice",
+      "Pure Ghee",
+      "Saffron Spices",
+      "Fried Nuts"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 123,
+    "image": "/images/dishes/veg-pulao.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "noodles-with-rice",
+    "name": "Noodles with Rice",
+    "sectionId": "food",
+    "category": "Fried Rice",
+    "price": 150,
+    "description": "Wok-tossed aromatic rice prepared with crunchy seasonal vegetables, soy, and oriental herbs.",
+    "ingredients": [
+      "Steamed Rice",
+      "Spring Onions",
+      "Bell Peppers",
+      "Oriental Spices"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 136,
+    "image": "/images/dishes/noodles-with-rice.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "manchurian-fried-rice",
+    "name": "Manchurian Fried Rice",
+    "sectionId": "food",
+    "category": "Fried Rice",
+    "price": 150,
+    "description": "Wok-tossed aromatic rice prepared with crunchy seasonal vegetables, soy, and oriental herbs.",
+    "ingredients": [
+      "Steamed Rice",
+      "Spring Onions",
+      "Bell Peppers",
+      "Oriental Spices"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 149,
+    "badge": "Popular",
+    "image": "/images/dishes/manchurian-fried-rice.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "paneer-fried-rice",
+    "name": "Paneer Fried Rice",
+    "sectionId": "food",
+    "category": "Fried Rice",
+    "price": 150,
+    "description": "Wok-tossed aromatic rice prepared with crunchy seasonal vegetables, soy, and oriental herbs.",
+    "ingredients": [
+      "Steamed Rice",
+      "Spring Onions",
+      "Bell Peppers",
+      "Oriental Spices"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 162,
+    "image": "/images/dishes/paneer-fried-rice.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "corn-fried-rice",
+    "name": "Corn Fried Rice",
+    "sectionId": "food",
+    "category": "Fried Rice",
+    "price": 130,
+    "description": "Wok-tossed aromatic rice prepared with crunchy seasonal vegetables, soy, and oriental herbs.",
+    "ingredients": [
+      "Steamed Rice",
+      "Spring Onions",
+      "Bell Peppers",
+      "Oriental Spices"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 55,
+    "image": "/images/dishes/corn-fried-rice.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "schezwan-fried-rice",
+    "name": "Schezwan Fried Rice",
+    "sectionId": "food",
+    "category": "Fried Rice",
+    "price": 120,
+    "description": "Spicy wok-fried rice tossed in fiery home-made Schezwan sauce and garlic.",
+    "ingredients": [
+      "Steamed Rice",
+      "Spring Onions",
+      "Bell Peppers",
+      "Oriental Spices"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 68,
+    "badge": "Spicy",
+    "image": "/images/dishes/schezwan-fried-rice.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "veg-fried-rice",
+    "name": "Veg Fried Rice",
+    "sectionId": "food",
+    "category": "Fried Rice",
+    "price": 120,
+    "description": "Wok-tossed aromatic rice prepared with crunchy seasonal vegetables, soy, and oriental herbs.",
+    "ingredients": [
+      "Steamed Rice",
+      "Spring Onions",
+      "Bell Peppers",
+      "Oriental Spices"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 81,
+    "image": "/images/dishes/veg-fried-rice.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "veg-hakka-noodles",
+    "name": "Veg Hakka Noodles",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 120,
+    "description": "Handcrafted noodles wok-tossed with fresh crunchy vegetables, garlic, and savory Asian sauces.",
+    "ingredients": [
+      "Noodles",
+      "Bell Peppers",
+      "Cabbage",
+      "Soy Garlic Glaze"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 94,
+    "badge": "Bestseller",
+    "image": "/images/dishes/veg-hakka-noodles.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "chinese-bhel",
+    "name": "Chinese Bhel",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 120,
+    "description": "Crispy noodles and fresh vegetable medley tossed in tangy sweet-and-spicy Chinese dressing.",
+    "ingredients": [
+      "Crisp Noodles",
+      "Cabbage",
+      "Sweet Chilli Sauce"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 107,
+    "image": "/images/dishes/chinese-bhel.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "veg-noodles-spicy",
+    "name": "Veg Noodles (Spicy)",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 140,
+    "description": "Handcrafted noodles wok-tossed with fresh crunchy vegetables, garlic, and savory Asian sauces.",
+    "ingredients": [
+      "Noodles",
+      "Bell Peppers",
+      "Cabbage",
+      "Soy Garlic Glaze"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 120,
+    "badge": "Spicy",
+    "image": "/images/dishes/veg-noodles-spicy.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "chilli-garlic-noodles",
+    "name": "Chilli Garlic Noodles",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 140,
+    "description": "Handcrafted noodles wok-tossed with fresh crunchy vegetables, garlic, and savory Asian sauces.",
+    "ingredients": [
+      "Noodles",
+      "Bell Peppers",
+      "Cabbage",
+      "Soy Garlic Glaze"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 133,
+    "image": "/images/dishes/chilli-garlic-noodles.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "schezwan-noodles",
+    "name": "Schezwan Noodles",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 150,
+    "description": "Handcrafted noodles wok-tossed with fresh crunchy vegetables, garlic, and savory Asian sauces.",
+    "ingredients": [
+      "Noodles",
+      "Bell Peppers",
+      "Cabbage",
+      "Soy Garlic Glaze"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 146,
+    "badge": "Spicy",
+    "image": "/images/dishes/schezwan-noodles.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "manchurian-noodles",
+    "name": "Manchurian Noodles",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 160,
+    "description": "Handcrafted noodles wok-tossed with fresh crunchy vegetables, garlic, and savory Asian sauces.",
+    "ingredients": [
+      "Noodles",
+      "Bell Peppers",
+      "Cabbage",
+      "Soy Garlic Glaze"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 159,
+    "image": "/images/dishes/manchurian-noodles.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "chilli-potato",
+    "name": "Chilli Potato",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 130,
+    "description": "Crisp potato fingers tossed in sticky sweet-and-spicy honey chilli sauce.",
+    "ingredients": [
+      "Crisp Potatoes",
+      "Sesame Seeds",
+      "Chilli Sauce",
+      "Scallions"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 52,
+    "badge": "Popular",
+    "image": "/images/dishes/chilli-potato.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "dry-manchurian",
+    "name": "Dry Manchurian",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 130,
+    "description": "Golden crispy vegetable balls simmered in a delectable ginger, garlic, and coriander sauce.",
+    "ingredients": [
+      "Veg Dumplings",
+      "Ginger Garlic",
+      "Soy Sauce",
+      "Spring Onion"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 65,
+    "badge": "Must Try",
+    "image": "/images/dishes/dry-manchurian.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "gravy-manchurian",
+    "name": "Gravy Manchurian",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 130,
+    "description": "Golden crispy vegetable balls simmered in a delectable ginger, garlic, and coriander sauce.",
+    "ingredients": [
+      "Veg Dumplings",
+      "Ginger Garlic",
+      "Soy Sauce",
+      "Spring Onion"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 78,
+    "image": "/images/dishes/gravy-manchurian.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "chilli-paneer",
+    "name": "Chilli Paneer",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 220,
+    "description": "Succulent cubes of fresh cottage cheese stir-fried with capsicum, onions, and spicy chilli glaze.",
+    "ingredients": [
+      "Fresh Paneer",
+      "Green Chillies",
+      "Capsicum",
+      "Garlic Soya"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 91,
+    "image": "/images/dishes/chilli-paneer.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "dry-chilli-paneer",
+    "name": "Dry Chilli Paneer",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 220,
+    "description": "Succulent cubes of fresh cottage cheese stir-fried with capsicum, onions, and spicy chilli glaze.",
+    "ingredients": [
+      "Fresh Paneer",
+      "Green Chillies",
+      "Capsicum",
+      "Garlic Soya"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 104,
+    "badge": "Chef Special",
+    "image": "/images/dishes/dry-chilli-paneer.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "gravy-chilli-paneer",
+    "name": "Gravy Chilli Paneer",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 200,
+    "description": "Succulent cubes of fresh cottage cheese stir-fried with capsicum, onions, and spicy chilli glaze.",
+    "ingredients": [
+      "Fresh Paneer",
+      "Green Chillies",
+      "Capsicum",
+      "Garlic Soya"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 117,
+    "image": "/images/dishes/gravy-chilli-paneer.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "dry-mushroom",
+    "name": "Dry Mushroom",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 240,
+    "description": "Tender button mushrooms tossed with green chillies, cracked pepper, and rich wok aromatics.",
+    "ingredients": [
+      "Fresh Button Mushrooms",
+      "Onions",
+      "Garlic",
+      "Chilli Paste"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 130,
+    "image": "/images/dishes/dry-mushroom.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "gravy-mushroom-chilli",
+    "name": "Gravy Mushroom Chilli",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 230,
+    "description": "Tender button mushrooms tossed with green chillies, cracked pepper, and rich wok aromatics.",
+    "ingredients": [
+      "Fresh Button Mushrooms",
+      "Onions",
+      "Garlic",
+      "Chilli Paste"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 143,
+    "image": "/images/dishes/gravy-mushroom-chilli.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "gravy-baby-corn-chilli",
+    "name": "Gravy Baby Corn Chilli",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 240,
+    "description": "Sweet golden corn kernels flash-fried to perfection with tangy spices and scallions.",
+    "ingredients": [
+      "Sweet Corn",
+      "Chilli Flakes",
+      "Spring Onion",
+      "Herbs"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 156,
+    "image": "/images/dishes/gravy-baby-corn-chilli.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "crispy-corn",
+    "name": "Crispy Corn",
+    "sectionId": "food",
+    "category": "Chinese",
+    "price": 100,
+    "description": "Sweet golden corn kernels flash-fried to perfection with tangy spices and scallions.",
+    "ingredients": [
+      "Sweet Corn",
+      "Chilli Flakes",
+      "Spring Onion",
+      "Herbs"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 49,
+    "badge": "Bestseller",
+    "image": "/images/dishes/crispy-corn.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "manchow-soup",
+    "name": "Manchow Soup",
+    "sectionId": "food",
+    "category": "Soups & Pav Bhaji",
+    "price": 100,
+    "description": "Warm comforting broth simmered with garden vegetables, aromatic herbs, and savory seasoning.",
+    "ingredients": [
+      "Vegetable Broth",
+      "Sweet Corn / Exotic Veggies",
+      "Fresh Herbs"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 62,
+    "badge": "Popular",
+    "image": "/images/dishes/manchow-soup.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "hot-and-sour-soup",
+    "name": "Hot and Sour Soup",
+    "sectionId": "food",
+    "category": "Soups & Pav Bhaji",
+    "price": 120,
+    "description": "Warm comforting broth simmered with garden vegetables, aromatic herbs, and savory seasoning.",
+    "ingredients": [
+      "Vegetable Broth",
+      "Sweet Corn / Exotic Veggies",
+      "Fresh Herbs"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 75,
+    "image": "/images/dishes/hot-and-sour-soup.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "sweet-corn-soup",
+    "name": "Sweet Corn Soup",
+    "sectionId": "food",
+    "category": "Soups & Pav Bhaji",
+    "price": 130,
+    "description": "Warm comforting broth simmered with garden vegetables, aromatic herbs, and savory seasoning.",
+    "ingredients": [
+      "Vegetable Broth",
+      "Sweet Corn / Exotic Veggies",
+      "Fresh Herbs"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 88,
+    "badge": "Bestseller",
+    "image": "/images/dishes/sweet-corn-soup.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "pav-bhaji",
+    "name": "Pav Bhaji",
+    "sectionId": "food",
+    "category": "Soups & Pav Bhaji",
+    "price": 100,
+    "description": "Mouthwatering spiced mashed vegetable curry topped with generous butter, served with soft toasted pav.",
+    "ingredients": [
+      "Mashed Veggies",
+      "Amul Butter",
+      "Pav Bhaji Masala",
+      "Fresh Pav"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 101,
+    "badge": "Bestseller",
+    "image": "/images/dishes/pav-bhaji.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "butter-pav-bhaji",
+    "name": "Butter Pav Bhaji",
+    "sectionId": "food",
+    "category": "Soups & Pav Bhaji",
+    "price": 120,
+    "description": "Mouthwatering spiced mashed vegetable curry topped with generous butter, served with soft toasted pav.",
+    "ingredients": [
+      "Mashed Veggies",
+      "Amul Butter",
+      "Pav Bhaji Masala",
+      "Fresh Pav"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 114,
+    "badge": "Chef Special",
+    "image": "/images/dishes/butter-pav-bhaji.png",
+    "servingSize": "1 Plate",
+    "prepTime": "10-15 min"
+  },
+  {
+    "id": "extra-pav",
+    "name": "Extra Pav",
+    "sectionId": "food",
+    "category": "Soups & Pav Bhaji",
+    "price": 15,
+    "description": "Soft pav toasted on tawa with golden butter.",
+    "ingredients": [
+      "Fresh Pav",
+      "Amul Butter"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 127,
+    "image": "/images/dishes/extra-pav.png",
+    "servingSize": "2 Pcs",
+    "prepTime": "5 min"
+  },
+  {
+    "id": "vada-pav",
+    "name": "Vada Pav",
+    "sectionId": "food",
+    "category": "Soups & Pav Bhaji",
+    "price": 50,
+    "description": "Mumbai-style spiced potato dumpling inside a soft bun with fiery garlic chutney and fried chillies.",
+    "ingredients": [
+      "Spiced Batata Vada",
+      "Soft Pav",
+      "Dry Garlic Chutney",
+      "Green Chutney"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 140,
+    "badge": "Popular",
+    "image": "/images/dishes/vada-pav.png",
+    "servingSize": "1 Pc",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "jamun-kala-katta",
+    "name": "Jamun Kala Katta",
+    "sectionId": "drinks",
+    "category": "Mocktails",
+    "price": 150,
+    "description": "Chilled handcrafted mocktail blended with premium fruit juices, sparkling soda, fresh mint, and zesty citrus.",
+    "ingredients": [
+      "Sparkling Soda",
+      "Fruit Pulp / Syrup",
+      "Fresh Mint",
+      "Lemon Twist"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 153,
+    "badge": "Chef Special",
+    "image": "/images/dishes/jamun-kala-katta.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "spicy-mango",
+    "name": "Spicy Mango",
+    "sectionId": "drinks",
+    "category": "Mocktails",
+    "price": 150,
+    "description": "Chilled handcrafted mocktail blended with premium fruit juices, sparkling soda, fresh mint, and zesty citrus.",
+    "ingredients": [
+      "Sparkling Soda",
+      "Fruit Pulp / Syrup",
+      "Fresh Mint",
+      "Lemon Twist"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 46,
+    "image": "/images/dishes/spicy-mango.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "masala-lemonade",
+    "name": "Masala Lemonade",
+    "sectionId": "drinks",
+    "category": "Mocktails",
+    "price": 150,
+    "description": "Chilled handcrafted mocktail blended with premium fruit juices, sparkling soda, fresh mint, and zesty citrus.",
+    "ingredients": [
+      "Sparkling Soda",
+      "Fruit Pulp / Syrup",
+      "Fresh Mint",
+      "Lemon Twist"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 59,
+    "image": "/images/dishes/masala-lemonade.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "chilli-guava",
+    "name": "Chilli Guava",
+    "sectionId": "drinks",
+    "category": "Mocktails",
+    "price": 150,
+    "description": "Chilled handcrafted mocktail blended with premium fruit juices, sparkling soda, fresh mint, and zesty citrus.",
+    "ingredients": [
+      "Sparkling Soda",
+      "Fruit Pulp / Syrup",
+      "Fresh Mint",
+      "Lemon Twist"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 72,
+    "badge": "Must Try",
+    "image": "/images/dishes/chilli-guava.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "peach",
+    "name": "Peach",
+    "sectionId": "drinks",
+    "category": "Mocktails",
+    "price": 130,
+    "description": "Chilled handcrafted mocktail blended with premium fruit juices, sparkling soda, fresh mint, and zesty citrus.",
+    "ingredients": [
+      "Sparkling Soda",
+      "Fruit Pulp / Syrup",
+      "Fresh Mint",
+      "Lemon Twist"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 85,
+    "image": "/images/dishes/peach.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "green-apple",
+    "name": "Green Apple",
+    "sectionId": "drinks",
+    "category": "Mocktails",
+    "price": 130,
+    "description": "Chilled handcrafted mocktail blended with premium fruit juices, sparkling soda, fresh mint, and zesty citrus.",
+    "ingredients": [
+      "Sparkling Soda",
+      "Fruit Pulp / Syrup",
+      "Fresh Mint",
+      "Lemon Twist"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 98,
+    "image": "/images/dishes/green-apple.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "mojito-mint",
+    "name": "Mojito Mint",
+    "sectionId": "drinks",
+    "category": "Mocktails",
+    "price": 130,
+    "description": "Chilled handcrafted mocktail blended with premium fruit juices, sparkling soda, fresh mint, and zesty citrus.",
+    "ingredients": [
+      "Sparkling Soda",
+      "Fruit Pulp / Syrup",
+      "Fresh Mint",
+      "Lemon Twist"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 111,
+    "badge": "Bestseller",
+    "image": "/images/dishes/mojito-mint.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "green-mint",
+    "name": "Green Mint",
+    "sectionId": "drinks",
+    "category": "Mocktails",
+    "price": 120,
+    "description": "Chilled handcrafted mocktail blended with premium fruit juices, sparkling soda, fresh mint, and zesty citrus.",
+    "ingredients": [
+      "Sparkling Soda",
+      "Fruit Pulp / Syrup",
+      "Fresh Mint",
+      "Lemon Twist"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 124,
+    "image": "/images/dishes/green-mint.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "mango-shake",
+    "name": "Mango Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 130,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 137,
+    "badge": "Must Try",
+    "image": "/images/dishes/mango-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "pineapple-shake",
+    "name": "Pineapple Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 130,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 150,
+    "image": "/images/dishes/pineapple-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "blueberry-shake",
+    "name": "Blueberry Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 130,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 163,
+    "image": "/images/dishes/blueberry-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "black-currant-shake",
+    "name": "Black Currant Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 130,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 56,
+    "image": "/images/dishes/black-currant-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "orange-shake",
+    "name": "Orange Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 130,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 69,
+    "image": "/images/dishes/orange-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "butterscotch-shake",
+    "name": "Butterscotch Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 150,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 82,
+    "image": "/images/dishes/butterscotch-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "strawberry-shake",
+    "name": "Strawberry Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 130,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 95,
+    "image": "/images/dishes/strawberry-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "mix-fruit-shake",
+    "name": "Mix Fruit Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 130,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 108,
+    "image": "/images/dishes/mix-fruit-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "chocolate-shake",
+    "name": "Chocolate Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 130,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 121,
+    "image": "/images/dishes/chocolate-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "kitkat-shake",
+    "name": "KitKat Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 150,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 134,
+    "badge": "Bestseller",
+    "image": "/images/dishes/kitkat-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "oreo-shake",
+    "name": "Oreo Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 140,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 147,
+    "badge": "Popular",
+    "image": "/images/dishes/oreo-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "dry-fruit-shake",
+    "name": "Dry Fruit Shake",
+    "sectionId": "drinks",
+    "category": "Thick Shakes",
+    "price": 150,
+    "description": "Thick and luscious shake churned with creamy full-cream milk, ice cream, and decadent flavors.",
+    "ingredients": [
+      "Creamy Milk",
+      "Ice Cream Scoop",
+      "Rich Syrup / Real Fruit",
+      "Whipped Cream"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 160,
+    "badge": "Chef Special",
+    "image": "/images/dishes/dry-fruit-shake.png",
+    "servingSize": "350 ml",
+    "prepTime": "5-8 min"
+  },
+  {
+    "id": "butter-khichdi",
+    "name": "Butter Khichdi",
+    "sectionId": "food",
+    "category": "Khichdi",
+    "price": 150,
+    "description": "Homestyle wholesome preparation of rice and lentils tempered with cumin, pure ghee, and warming spices.",
+    "ingredients": [
+      "Govindobhog / Basmati Rice",
+      "Yellow Moong Dal",
+      "Pure Desi Ghee",
+      "Cumin & Hing"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 53,
+    "badge": "Must Try",
+    "image": "/images/dishes/butter-khichdi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "mix-vegetables-khichdi",
+    "name": "Mix Vegetables Khichdi",
+    "sectionId": "food",
+    "category": "Khichdi",
+    "price": 170,
+    "description": "Homestyle wholesome preparation of rice and lentils tempered with cumin, pure ghee, and warming spices.",
+    "ingredients": [
+      "Govindobhog / Basmati Rice",
+      "Yellow Moong Dal",
+      "Pure Desi Ghee",
+      "Cumin & Hing"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 66,
+    "image": "/images/dishes/mix-vegetables-khichdi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "matar-paneer-khichdi",
+    "name": "Matar Paneer Khichdi",
+    "sectionId": "food",
+    "category": "Khichdi",
+    "price": 180,
+    "description": "Homestyle wholesome preparation of rice and lentils tempered with cumin, pure ghee, and warming spices.",
+    "ingredients": [
+      "Govindobhog / Basmati Rice",
+      "Yellow Moong Dal",
+      "Pure Desi Ghee",
+      "Cumin & Hing"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 79,
+    "image": "/images/dishes/matar-paneer-khichdi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "shahi-special-khichdi",
+    "name": "Shahi Special Khichdi",
+    "sectionId": "food",
+    "category": "Khichdi",
+    "price": 200,
+    "description": "Homestyle wholesome preparation of rice and lentils tempered with cumin, pure ghee, and warming spices.",
+    "ingredients": [
+      "Govindobhog / Basmati Rice",
+      "Yellow Moong Dal",
+      "Pure Desi Ghee",
+      "Cumin & Hing"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 92,
+    "badge": "Chef Special",
+    "image": "/images/dishes/shahi-special-khichdi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "salted-french-fries",
+    "name": "Salted French Fries",
+    "sectionId": "food",
+    "category": "Fries & Snacks",
+    "price": 80,
+    "description": "Classic hot and crispy golden potato fries lightly salted, served piping hot with ketchup.",
+    "ingredients": [
+      "Golden Potato Fries",
+      "Sea Salt",
+      "Tomato Dip"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 50,
+    "image": "/images/dishes/salted-french-fries.png",
+    "servingSize": "1 Portion",
+    "prepTime": "6-8 min"
+  },
+  {
+    "id": "peri-peri-fries",
+    "name": "Peri Peri Fries",
+    "sectionId": "food",
+    "category": "Fries & Snacks",
+    "price": 100,
+    "description": "Crispy golden potato fries generously dusted with spicy, tangy African bird’s eye peri-peri spice.",
+    "ingredients": [
+      "Crisp Potato Fries",
+      "Peri Peri Spice",
+      "Chilli Flakes",
+      "Dip"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 67,
+    "badge": "Bestseller",
+    "image": "/images/dishes/peri-peri-fries.png",
+    "servingSize": "1 Portion",
+    "prepTime": "6-8 min"
+  },
+  {
+    "id": "masala-french-fries",
+    "name": "Masala French Fries",
+    "sectionId": "food",
+    "category": "Fries & Snacks",
+    "price": 100,
+    "description": "Crunchy deep-fried potato fries tossed with chatpata Indian chaat masala and herbs.",
+    "ingredients": [
+      "Crisp Potato Fries",
+      "Chaat Masala",
+      "Tangy Seasoning"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 84,
+    "badge": "Popular",
+    "image": "/images/dishes/masala-french-fries.png",
+    "servingSize": "1 Portion",
+    "prepTime": "6-8 min"
+  },
+  {
+    "id": "veg-momos",
+    "name": "Veg Momos",
+    "sectionId": "food",
+    "category": "Fries & Snacks",
+    "price": 100,
+    "description": "Authentic steamed dumplings loaded with finely minced cabbage, carrots, bell peppers, and scallions.",
+    "ingredients": [
+      "Seasonal Vegetables",
+      "Ginger Garlic",
+      "Steamed Dumpling Wrap",
+      "Red Chutney"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 101,
+    "image": "/images/dishes/veg-momos.png",
+    "servingSize": "6 Pcs",
+    "prepTime": "10-12 min"
+  },
+  {
+    "id": "cheese-corn-momos",
+    "name": "Cheese Corn Momos",
+    "sectionId": "food",
+    "category": "Fries & Snacks",
+    "price": 120,
+    "description": "Steamed Himalayan dumplings packed with melted mozzarella, sweet golden corn, and aromatic herbs.",
+    "ingredients": [
+      "Mozzarella Cheese",
+      "Sweet Corn",
+      "Herb Dumpling Wrappers",
+      "Spicy Momo Chutney"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 118,
+    "badge": "Chef Special",
+    "image": "/images/dishes/cheese-corn-momos.png",
+    "servingSize": "6 Pcs",
+    "prepTime": "10-12 min"
+  },
+  {
+    "id": "paneer-momos",
+    "name": "Paneer Momos",
+    "sectionId": "food",
+    "category": "Fries & Snacks",
+    "price": 150,
+    "description": "Delicate steamed dumplings stuffed with spiced crumbled fresh paneer and coriander.",
+    "ingredients": [
+      "Fresh Malai Paneer",
+      "Finely Chopped Herbs",
+      "Fiery Red Momo Chutney"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 135,
+    "badge": "Popular",
+    "image": "/images/dishes/paneer-momos.png",
+    "servingSize": "6 Pcs",
+    "prepTime": "10-12 min"
+  },
+  {
+    "id": "veg-spring-roll",
+    "name": "Veg Spring Roll",
+    "sectionId": "food",
+    "category": "Fries & Snacks",
+    "price": 150,
+    "description": "Golden crispy pastry rolls stuffed with shredded wok-tossed vegetables and glass noodles.",
+    "ingredients": [
+      "Spring Roll Wrapper",
+      "Shredded Cabbage",
+      "Carrot",
+      "Sweet Chilli Dip"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 152,
+    "badge": "Must Try",
+    "image": "/images/dishes/veg-spring-roll.png",
+    "servingSize": "2 Rolls / 6 Pcs",
+    "prepTime": "10-12 min"
+  },
+  {
+    "id": "paneer-sandwich",
+    "name": "Paneer Sandwich",
+    "sectionId": "food",
+    "category": "Sandwiches",
+    "price": 120,
+    "description": "Crisp grilled bread stuffed with seasoned paneer bhurji, tomatoes, capsicum, and chaat herbs.",
+    "ingredients": [
+      "Fresh Paneer",
+      "Capsicum",
+      "Onion",
+      "Toasted Butter Bread"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 169,
+    "image": "/images/dishes/paneer-sandwich.png",
+    "servingSize": "2 Cut Slices",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "aloo-tikki-sandwich",
+    "name": "Aloo Tikki Sandwich",
+    "sectionId": "food",
+    "category": "Sandwiches",
+    "price": 90,
+    "description": "Spiced golden potato patty tucked between grilled buttery bread with tangy sauces and crunchy onions.",
+    "ingredients": [
+      "Crisp Potato Patty",
+      "Mint Mayo",
+      "Sliced Tomato",
+      "Toasted Bread"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 56,
+    "image": "/images/dishes/aloo-tikki-sandwich.png",
+    "servingSize": "2 Cut Slices",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "jumbo-special-sandwich",
+    "name": "Jumbo Special Sandwich",
+    "sectionId": "food",
+    "category": "Sandwiches",
+    "price": 150,
+    "description": "Multi-layered jumbo grilled sandwich packed with paneer, melting cheese, vibrant vegetables, and zesty secret house sauces.",
+    "ingredients": [
+      "Jumbo Bread",
+      "Fresh Paneer",
+      "Amul Cheese",
+      "Veggies",
+      "House Chutney"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 73,
+    "badge": "Bestseller",
+    "image": "/images/dishes/jumbo-special-sandwich.png",
+    "servingSize": "2 Cut Slices",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "masala-sandwich",
+    "name": "Masala Sandwich",
+    "sectionId": "food",
+    "category": "Sandwiches",
+    "price": 100,
+    "description": "Spiced potato and onion mixture seasoned with traditional street-style masala on grilled bread.",
+    "ingredients": [
+      "Aloo Masala",
+      "Green Chutney",
+      "Toasted Bread"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 90,
+    "image": "/images/dishes/masala-sandwich.png",
+    "servingSize": "2 Cut Slices",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "masala-cheese-sandwich",
+    "name": "Masala Cheese Sandwich",
+    "sectionId": "food",
+    "category": "Sandwiches",
+    "price": 120,
+    "description": "Spiced vegetable mash layered with gooey cheddar cheese and toasted golden brown.",
+    "ingredients": [
+      "Spiced Potato Masala",
+      "Melted Cheese",
+      "Butter",
+      "Toasted Bread"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 107,
+    "badge": "Popular",
+    "image": "/images/dishes/masala-cheese-sandwich.png",
+    "servingSize": "2 Cut Slices",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "cheese-chutney-sandwich",
+    "name": "Cheese Chutney Sandwich",
+    "sectionId": "food",
+    "category": "Sandwiches",
+    "price": 120,
+    "description": "Classic Mumbai-style sandwich with sharp cheese slices and spicy coriander-mint chutney on buttery toast.",
+    "ingredients": [
+      "Cheese Slices",
+      "Spicy Mint Chutney",
+      "Amul Butter"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 124,
+    "image": "/images/dishes/cheese-chutney-sandwich.png",
+    "servingSize": "2 Cut Slices",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "corn-mayo-sandwich",
+    "name": "Corn Mayo Sandwich",
+    "sectionId": "food",
+    "category": "Sandwiches",
+    "price": 120,
+    "description": "Juicy sweet corn kernels smothered in creamy seasoned mayonnaise between grilled crusts.",
+    "ingredients": [
+      "Sweet Corn",
+      "Creamy Mayo",
+      "Black Pepper",
+      "Toasted Bread"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 141,
+    "image": "/images/dishes/corn-mayo-sandwich.png",
+    "servingSize": "2 Cut Slices",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "paneer-cheese-sandwich",
+    "name": "Paneer Cheese Sandwich",
+    "sectionId": "food",
+    "category": "Sandwiches",
+    "price": 140,
+    "description": "Grilled sandwich loaded with thick cottage cheese slabs, melted cheese, bell peppers, and mint spread.",
+    "ingredients": [
+      "Malai Paneer",
+      "Melted Cheese",
+      "Butter",
+      "Green Chutney"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 158,
+    "badge": "Chef Special",
+    "image": "/images/dishes/paneer-cheese-sandwich.png",
+    "servingSize": "2 Cut Slices",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "vegetable-cheese-sandwich",
+    "name": "Vegetable Cheese Sandwich",
+    "sectionId": "food",
+    "category": "Sandwiches",
+    "price": 120,
+    "description": "Crunchy cucumbers, ripe tomatoes, bell peppers, and melting cheese seasoned with oregano.",
+    "ingredients": [
+      "Garden Vegetables",
+      "Cheese Slice",
+      "Herbs",
+      "Butter Bread"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 175,
+    "image": "/images/dishes/vegetable-cheese-sandwich.png",
+    "servingSize": "2 Cut Slices",
+    "prepTime": "8-10 min"
+  },
+  {
+    "id": "plain-pizza",
+    "name": "Plain Pizza",
+    "sectionId": "food",
+    "category": "Pizzas",
+    "price": 120,
+    "description": "Simple timeless classic pizza topped with fragrant tomato basil sauce and pure melted mozzarella.",
+    "ingredients": [
+      "Crisp Pizza Base",
+      "Rich Tomato Puree",
+      "Mozzarella"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 62,
+    "image": "/images/dishes/plain-pizza.png",
+    "servingSize": "Regular 8\"",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "onion-pizza",
+    "name": "Onion Pizza",
+    "sectionId": "food",
+    "category": "Pizzas",
+    "price": 130,
+    "description": "Crunchy caramelized red onions paired with tangy pizza sauce and bubbling melted cheese.",
+    "ingredients": [
+      "Red Onions",
+      "Mozzarella Cheese",
+      "Pizza Sauce"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 79,
+    "image": "/images/dishes/onion-pizza.png",
+    "servingSize": "Regular 8\"",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "capsicum-pizza",
+    "name": "Capsicum Pizza",
+    "sectionId": "food",
+    "category": "Pizzas",
+    "price": 130,
+    "description": "Crispy green bell peppers and aromatic mozzarella on a crispy golden baked crust.",
+    "ingredients": [
+      "Fresh Bell Peppers",
+      "Marinara Sauce",
+      "Mozzarella"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 96,
+    "image": "/images/dishes/capsicum-pizza.png",
+    "servingSize": "Regular 8\"",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "sweet-corn-pizza",
+    "name": "Sweet Corn Pizza",
+    "sectionId": "food",
+    "category": "Pizzas",
+    "price": 140,
+    "description": "Sweet juicy corn kernels layered over creamy mozzarella cheese and seasoned with Italian herbs.",
+    "ingredients": [
+      "Golden Sweet Corn",
+      "Italian Cheese",
+      "Oregano Blend"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 113,
+    "image": "/images/dishes/sweet-corn-pizza.png",
+    "servingSize": "Regular 8\"",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "farm-house-pizza",
+    "name": "Farm House Pizza",
+    "sectionId": "food",
+    "category": "Pizzas",
+    "price": 180,
+    "description": "Colorful celebration of crisp capsicum, ripe tomatoes, sweet corn, and onions over rich herb tomato sauce.",
+    "ingredients": [
+      "Capsicum",
+      "Onions",
+      "Sweet Corn",
+      "Mozzarella Blend"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 130,
+    "badge": "Popular",
+    "image": "/images/dishes/farm-house-pizza.png",
+    "servingSize": "Regular 8\"",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "paneer-pizza",
+    "name": "Paneer Pizza",
+    "sectionId": "food",
+    "category": "Pizzas",
+    "price": 180,
+    "description": "Soft cottage cheese cubes generously spread over herb marinara and melted mozzarella.",
+    "ingredients": [
+      "Fresh Paneer Cubes",
+      "Tomato Basil Sauce",
+      "Mozzarella Cheese"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 147,
+    "image": "/images/dishes/paneer-pizza.png",
+    "servingSize": "Regular 8\"",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "cheese-burst-pizza",
+    "name": "Cheese Burst Pizza",
+    "sectionId": "food",
+    "category": "Pizzas",
+    "price": 200,
+    "description": "Decadent pizza with a molten gooey cheese stuffed inside the crust, blanketed with golden baked mozzarella.",
+    "ingredients": [
+      "Liquid Cheese Core",
+      "Mozzarella Layer",
+      "Rich Pizza Sauce",
+      "Oregano Seasoning"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 164,
+    "badge": "Bestseller",
+    "image": "/images/dishes/cheese-burst-pizza.png",
+    "servingSize": "Regular 8\"",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "paneer-tikka-pizza",
+    "name": "Paneer Tikka Pizza",
+    "sectionId": "food",
+    "category": "Pizzas",
+    "price": 200,
+    "description": "Tandoori-marinated paneer chunks baked with capsicum, red onions, and smoky tandoori spiced tomato sauce.",
+    "ingredients": [
+      "Tandoori Paneer",
+      "Crisp Capsicum",
+      "Red Onion",
+      "Mozzarella"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 51,
+    "badge": "Must Try",
+    "image": "/images/dishes/paneer-tikka-pizza.png",
+    "servingSize": "Regular 8\"",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "chef-special-pizza",
+    "name": "Chef Special Pizza",
+    "sectionId": "food",
+    "category": "Pizzas",
+    "price": 250,
+    "description": "Loaded supreme pizza featuring paneer tikka, sweet corn, black olives, jalapenos, bell peppers, and double mozzarella.",
+    "ingredients": [
+      "Handcrafted Dough",
+      "Paneer Tikka",
+      "Jalapenos",
+      "Mozzarella & Cheddar",
+      "Italian Herbs"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 68,
+    "badge": "Chef Special",
+    "image": "/images/dishes/chef-special-pizza.png",
+    "servingSize": "Regular 8\"",
+    "prepTime": "12-15 min"
+  },
+  {
+    "id": "aloo-tikki-burger",
+    "name": "Aloo Tikki Burger",
+    "sectionId": "food",
+    "category": "Burgers",
+    "price": 80,
+    "description": "Street-favorite crispy potato patty with fresh onion rings, tomatoes, and zesty herb sauce in a toasted bun.",
+    "ingredients": [
+      "Crisp Aloo Patty",
+      "Onion & Tomato",
+      "Zesty Mayo",
+      "Toasted Bun"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 85,
+    "image": "/images/dishes/aloo-tikki-burger.png",
+    "servingSize": "1 Burger",
+    "prepTime": "10-12 min"
+  },
+  {
+    "id": "cheese-burger",
+    "name": "Cheese Burger",
+    "sectionId": "food",
+    "category": "Burgers",
+    "price": 100,
+    "description": "Golden spiced patty stacked with melted American cheese, crunchy cucumber, tomatoes, and cocktail sauce.",
+    "ingredients": [
+      "Golden Patty",
+      "Cheese Slice",
+      "Cocktail Burger Sauce",
+      "Sesame Bun"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 102,
+    "image": "/images/dishes/cheese-burger.png",
+    "servingSize": "1 Burger",
+    "prepTime": "10-12 min"
+  },
+  {
+    "id": "double-cheese-burger",
+    "name": "Double Cheese Burger",
+    "sectionId": "food",
+    "category": "Burgers",
+    "price": 110,
+    "description": "Spiced vegetable patty smothered under double slices of gooey cheddar cheese and smoky burger relish.",
+    "ingredients": [
+      "Spiced Patty",
+      "Double Cheddar Slices",
+      "Onion Rings",
+      "Toasted Brioche Bun"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 119,
+    "badge": "Bestseller",
+    "image": "/images/dishes/double-cheese-burger.png",
+    "servingSize": "1 Burger",
+    "prepTime": "10-12 min"
+  },
+  {
+    "id": "veg-cheese-burger",
+    "name": "Veg Cheese Burger",
+    "sectionId": "food",
+    "category": "Burgers",
+    "price": 120,
+    "description": "Hearty garden vegetable patty topped with melted cheese, crisp lettuce, sliced tomatoes, and creamy house dressing.",
+    "ingredients": [
+      "Vegetable Patty",
+      "Cheese Slice",
+      "Pickles & Greens",
+      "Soft Bun"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 136,
+    "badge": "Popular",
+    "image": "/images/dishes/veg-cheese-burger.png",
+    "servingSize": "1 Burger",
+    "prepTime": "10-12 min"
+  },
+  {
+    "id": "paneer-cheese-burger",
+    "name": "Paneer Cheese Burger",
+    "sectionId": "food",
+    "category": "Burgers",
+    "price": 150,
+    "description": "Crispy panko-crusted cottage cheese patty with melted cheese, iceberg lettuce, tomatoes, and spicy chipotle mayo.",
+    "ingredients": [
+      "Crisp Paneer Patty",
+      "Cheddar Cheese Slice",
+      "Lettuce",
+      "Toasted Sesame Bun"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 153,
+    "badge": "Chef Special",
+    "image": "/images/dishes/paneer-cheese-burger.png",
+    "servingSize": "1 Burger",
+    "prepTime": "10-12 min"
+  },
+  {
+    "id": "normal-maggi",
+    "name": "Normal Maggi",
+    "sectionId": "food",
+    "category": "Maggi & Noodles",
+    "price": 50,
+    "description": "The quintessential 2-minute Maggi noodles prepared plain and simple, piping hot and comforting.",
+    "ingredients": [
+      "Maggi Noodles",
+      "Original Tastemaker"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 170,
+    "image": "/images/dishes/normal-maggi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "6-8 min"
+  },
+  {
+    "id": "masala-maggi",
+    "name": "Masala Maggi",
+    "sectionId": "food",
+    "category": "Maggi & Noodles",
+    "price": 60,
+    "description": "Classic seasoned Maggi noodles cooked with sliced onions, green chillies, and rich masala.",
+    "ingredients": [
+      "Maggi Noodles",
+      "Onions",
+      "Tastemaker",
+      "Butter"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 57,
+    "image": "/images/dishes/masala-maggi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "6-8 min"
+  },
+  {
+    "id": "double-masala-maggi",
+    "name": "Double Masala Maggi",
+    "sectionId": "food",
+    "category": "Maggi & Noodles",
+    "price": 70,
+    "description": "Extra punchy Maggi noodles infused with double sachets of classic aromatic tastemaker seasoning.",
+    "ingredients": [
+      "Maggi Noodles",
+      "Double Masala Blend",
+      "Butter"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 74,
+    "image": "/images/dishes/double-masala-maggi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "6-8 min"
+  },
+  {
+    "id": "cheese-maggi",
+    "name": "Cheese Maggi",
+    "sectionId": "food",
+    "category": "Maggi & Noodles",
+    "price": 80,
+    "description": "Comforting soupy Maggi smothered with generous grated processed cheese and cracked black pepper.",
+    "ingredients": [
+      "Maggi Noodles",
+      "Amul Cheese Melt",
+      "Tastemaker Spice",
+      "Herbs"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 91,
+    "badge": "Bestseller",
+    "image": "/images/dishes/cheese-maggi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "6-8 min"
+  },
+  {
+    "id": "vegetable-maggi",
+    "name": "Vegetable Maggi",
+    "sectionId": "food",
+    "category": "Maggi & Noodles",
+    "price": 90,
+    "description": "Stir-fried Maggi loaded with crunchy carrots, green peas, capsicum, and onions in aromatic broth.",
+    "ingredients": [
+      "Maggi Noodles",
+      "Garden Peas",
+      "Carrots",
+      "Capsicum",
+      "Special Masala"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 108,
+    "badge": "Popular",
+    "image": "/images/dishes/vegetable-maggi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "6-8 min"
+  },
+  {
+    "id": "schezwan-maggi",
+    "name": "Schezwan Maggi",
+    "sectionId": "food",
+    "category": "Maggi & Noodles",
+    "price": 90,
+    "description": "Fiery hot Maggi noodles tossed in red Schezwan sauce, crushed garlic, and spring onions.",
+    "ingredients": [
+      "Maggi Noodles",
+      "Schezwan Sauce",
+      "Garlic",
+      "Chilli Oil"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 125,
+    "badge": "Spicy",
+    "image": "/images/dishes/schezwan-maggi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "6-8 min"
+  },
+  {
+    "id": "punjabi-tadka-maggi",
+    "name": "Punjabi Tadka Maggi",
+    "sectionId": "food",
+    "category": "Maggi & Noodles",
+    "price": 120,
+    "description": "Dhaba-style Maggi tempered with sizzling garlic, cumin, onions, green chillies, and pure desi ghee.",
+    "ingredients": [
+      "Maggi Noodles",
+      "Desi Ghee Tadka",
+      "Burnt Garlic",
+      "Green Chillies",
+      "Spices"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 142,
+    "badge": "Chef Special",
+    "image": "/images/dishes/punjabi-tadka-maggi.png",
+    "servingSize": "1 Bowl",
+    "prepTime": "6-8 min"
+  },
+  {
+    "id": "normal-tea",
+    "name": "Normal Tea",
+    "sectionId": "coffee_tea",
+    "category": "Artisan Teas & Chai",
+    "price": 20,
+    "description": "Traditional Indian kadak chai brewed to perfection with premium Assam tea leaves and wholesome milk.",
+    "ingredients": [
+      "Assam CTC Tea",
+      "Full Cream Milk",
+      "Caramelized Sugar"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 159,
+    "badge": "Popular",
+    "image": "/images/dishes/normal-tea.png",
+    "servingSize": "150 ml Cup",
+    "prepTime": "5-7 min",
+    "tempPreference": "Hot",
+    "brewMethod": "Traditional Kadak Brew",
+    "origin": "Assam Valley",
+    "roastLevel": "Golden CTC Leaf",
+    "caffeineLevel": "Medium",
+    "tastingNotes": [
+      "Malty",
+      "Rich Tea Aroma",
+      "Earthy Sweetness"
+    ]
+  },
+  {
+    "id": "masala-tea",
+    "name": "Masala Tea",
+    "sectionId": "coffee_tea",
+    "category": "Artisan Teas & Chai",
+    "price": 30,
+    "description": "Aromatic kadak chai slow-simmered with crushed green cardamom, fresh ginger, cinnamon, and whole spices.",
+    "ingredients": [
+      "First Flush Assam CTC",
+      "Fresh Ginger",
+      "Cardamom",
+      "Creamy Milk"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 176,
+    "badge": "Bestseller",
+    "image": "/images/dishes/masala-tea.png",
+    "servingSize": "150 ml Cup",
+    "prepTime": "5-7 min",
+    "tempPreference": "Hot",
+    "brewMethod": "Slow Spiced Decoction",
+    "origin": "Upper Assam Estate",
+    "roastLevel": "Hand-Crushed Spice Blend",
+    "caffeineLevel": "Medium",
+    "tastingNotes": [
+      "Fresh Ginger",
+      "Green Cardamom",
+      "Warm Cinnamon"
+    ]
+  },
+  {
+    "id": "black-coffee",
+    "name": "Black Coffee",
+    "sectionId": "coffee_tea",
+    "category": "Hot Espresso & Brews",
+    "price": 30,
+    "description": "Intense and aromatic double-shot espresso poured over hot spring water with a golden crema.",
+    "ingredients": [
+      "100% Arabica Beans",
+      "Filtered Hot Spring Water"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 63,
+    "badge": "Bold Energy",
+    "image": "/images/dishes/black-coffee.png",
+    "servingSize": "200 ml Cup",
+    "prepTime": "4-6 min",
+    "tempPreference": "Hot",
+    "brewMethod": "Double Shot Americano",
+    "origin": "Chikmagalur Arabica Estate",
+    "roastLevel": "Medium-Dark Roast",
+    "caffeineLevel": "High",
+    "tastingNotes": [
+      "Dark Cocoa",
+      "Roasted Almond",
+      "Subtle Citrus"
+    ]
+  },
+  {
+    "id": "hot-coffee",
+    "name": "Hot Coffee",
+    "sectionId": "coffee_tea",
+    "category": "Hot Espresso & Brews",
+    "price": 30,
+    "description": "Rich, aromatic freshly brewed espresso folded into velvety microfoam steamed milk with a smooth finish.",
+    "ingredients": [
+      "Fresh Espresso Shot",
+      "Steamed Microfoam Milk"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 80,
+    "badge": "Signature Brew",
+    "image": "/images/dishes/hot-coffee.png",
+    "servingSize": "200 ml Cup",
+    "prepTime": "4-6 min",
+    "tempPreference": "Hot",
+    "brewMethod": "Steamed Microfoam Espresso",
+    "origin": "Coorg Plantation Arabica",
+    "roastLevel": "Medium Roast",
+    "caffeineLevel": "Medium",
+    "tastingNotes": [
+      "Velvet Cream",
+      "Toasted Hazelnut",
+      "Caramel"
+    ]
+  },
+  {
+    "id": "cold-coffee",
+    "name": "Cold Coffee",
+    "sectionId": "coffee_tea",
+    "category": "Cold Brews & Frappes",
+    "price": 100,
+    "description": "Creamy, frothy iced cold coffee whipped with freshly brewed espresso and chilled sweetened milk.",
+    "ingredients": [
+      "Fresh Espresso Shot",
+      "Chilled Cream Milk",
+      "Sweet Froth"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.6,
+    "ratingCount": 97,
+    "badge": "Bestseller",
+    "image": "/images/dishes/cold-coffee.png",
+    "servingSize": "350 ml Glass",
+    "prepTime": "5-7 min",
+    "tempPreference": "Iced",
+    "brewMethod": "Chilled Whipped Espresso",
+    "origin": "Single Origin Robusta & Arabica",
+    "roastLevel": "Dark Roast Blend",
+    "caffeineLevel": "Energy Boost",
+    "tastingNotes": [
+      "Thick Foam",
+      "Sweet Mocha",
+      "Chilled Cream"
+    ]
+  },
+  {
+    "id": "cold-coffee-with-icecream",
+    "name": "Cold Coffee with Icecream",
+    "sectionId": "coffee_tea",
+    "category": "Cold Brews & Frappes",
+    "price": 130,
+    "description": "Silky cold coffee topped with a velvety scoop of rich vanilla ice cream and dusted cocoa.",
+    "ingredients": [
+      "Espresso Base",
+      "Full Cream Milk",
+      "Vanilla Ice Cream Scoop",
+      "Cocoa Dust"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 114,
+    "badge": "Must Try",
+    "image": "/images/dishes/cold-coffee-with-icecream.png",
+    "servingSize": "350 ml Glass",
+    "prepTime": "5-7 min",
+    "tempPreference": "Iced",
+    "brewMethod": "Gourmet Affogato Frappe",
+    "origin": "Chikmagalur Arabica",
+    "roastLevel": "Slow Roasted Espresso",
+    "caffeineLevel": "Medium",
+    "tastingNotes": [
+      "Madagascar Vanilla",
+      "Decadent Cream",
+      "Espresso Swirl"
+    ]
+  },
+  {
+    "id": "chocolate-cold-coffee",
+    "name": "Chocolate Cold Coffee",
+    "sectionId": "coffee_tea",
+    "category": "Cold Brews & Frappes",
+    "price": 150,
+    "description": "Decadent chilled frappe blending rich dark cocoa, espresso, creamy milk, and chocolate drizzle.",
+    "ingredients": [
+      "Double Shot Espresso",
+      "Belgian Cocoa",
+      "Vanilla Cream",
+      "Chocolate Drizzle"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 131,
+    "badge": "Chef Special",
+    "image": "/images/dishes/chocolate-cold-coffee.png",
+    "servingSize": "350 ml Glass",
+    "prepTime": "5-7 min",
+    "tempPreference": "Iced",
+    "brewMethod": "Blended Belgian Mocha Frappe",
+    "origin": "Artisan Blend & 70% Dark Cocoa",
+    "roastLevel": "Medium-Dark Roast",
+    "caffeineLevel": "Energy Boost",
+    "tastingNotes": [
+      "Belgian Chocolate",
+      "Rich Fudge",
+      "Espresso Glaze"
+    ]
+  },
+  {
+    "id": "white-chocolate-stick-waffle",
+    "name": "White Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 80,
+    "description": "Crisp golden stick waffle generously drizzled with warm, velvety Belgian white chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 55,
+    "hasIceCreamAddon": true,
+    "badge": "Popular",
+    "image": "/images/dishes/white-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "dark-chocolate-stick-waffle",
+    "name": "Dark Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 80,
+    "description": "Freshly pressed stick waffle coated with rich, bittersweet 55% Belgian dark chocolate sauce.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 74,
+    "hasIceCreamAddon": true,
+    "badge": "Popular",
+    "image": "/images/dishes/dark-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "milk-chocolate-stick-waffle",
+    "name": "Milk Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 80,
+    "description": "Classic stick waffle bathed in smooth, creamy European milk chocolate glaze.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 93,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/milk-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "dark-milk-chocolate-stick-waffle",
+    "name": "Dark & Milk Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 90,
+    "description": "The perfect duality of rich dark chocolate and silky milk chocolate ribbons.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 112,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/dark-milk-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "milk-white-chocolate-stick-waffle",
+    "name": "Milk & White Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 90,
+    "description": "Luscious combination of creamy white chocolate and sweet milk chocolate swirls.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 131,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/milk-white-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "dark-white-chocolate-stick-waffle",
+    "name": "Dark & White Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 90,
+    "description": "Striking zebra-striped stick waffle with contrasting dark and white chocolate sauces.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 150,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/dark-white-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "waffle-with-sprinkle",
+    "name": "Waffle With Sprinkle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 90,
+    "description": "Fun, vibrant waffle on a stick glazed in sweet chocolate and showered with colorful rainbow sprinkles.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 59,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/waffle-with-sprinkle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "triple-chocolate-stick-waffle",
+    "name": "Triple Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 100,
+    "description": "Chocolate lover's dream smothered in dark, milk, and white Belgian chocolates.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 78,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/triple-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "oreo-dark-chocolate-stick-waffle",
+    "name": "Oreo Dark Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 110,
+    "description": "Bittersweet dark chocolate drizzle crowned with crunchy crushed Oreo cookie crumble.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 97,
+    "hasIceCreamAddon": true,
+    "badge": "Popular",
+    "image": "/images/dishes/oreo-dark-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "oreo-white-chocolate-stick-waffle",
+    "name": "Oreo White Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 110,
+    "description": "Cookies & cream sensation with sweet white chocolate and crunchy Oreo crumbles.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 116,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/oreo-white-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kitkat-dark-chocolate-stick-waffle",
+    "name": "Kitkat Dark Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 100,
+    "description": "Dark chocolate glazed stick waffle topped with crispy KitKat wafer crunch.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 135,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/kitkat-dark-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kitkat-white-chocolate-stick-waffle",
+    "name": "Kitkat White Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 110,
+    "description": "Sweet white chocolate coating topped with crushed KitKat chocolate wafer bars.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 154,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/kitkat-white-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "chocopie-stick-waffle",
+    "name": "Chocopie Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 130,
+    "description": "Decadent stick waffle layered with soft marshmallow chocopie cake and chocolate glaze.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 63,
+    "hasIceCreamAddon": true,
+    "badge": "Must Try",
+    "image": "/images/dishes/chocopie-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kitkat-nutella-stick-waffle",
+    "name": "Kitkat Nutella Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 130,
+    "description": "Rich Italian hazelnut Nutella spread topped with generous crushed KitKat fingers.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 82,
+    "hasIceCreamAddon": true,
+    "badge": "Chef Special",
+    "image": "/images/dishes/kitkat-nutella-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "brownie-stick-waffle",
+    "name": "Brownie Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 130,
+    "description": "Warm Belgian stick waffle topped with crumbled fudgy chocolate brownie and chocolate fudge.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 101,
+    "hasIceCreamAddon": true,
+    "badge": "Must Try",
+    "image": "/images/dishes/brownie-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kinder-joy-stick-waffle",
+    "name": "Kinder Joy Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 130,
+    "description": "Kids favorite crispy waffle adorned with creamy Kinder Joy chocolate and milky creme.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 120,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/kinder-joy-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "marshmallow-stick-waffle",
+    "name": "Marshmallow Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 130,
+    "description": "Fluffy, pillowy marshmallows toasted atop warm chocolate-drenched waffle stick.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 139,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/marshmallow-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "coffee-stick-waffle",
+    "name": "Coffee Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 130,
+    "description": "Infused with rich aromatic mocha espresso glaze and chocolate chips.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 158,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/coffee-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "ferrero-rocher-stick-waffle",
+    "name": "Ferrero Rocher Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Stick Waffles",
+    "price": 140,
+    "description": "Luxury Belgian stick waffle smothered in Nutella, crushed roasted hazelnuts, and Ferrero Rocher.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 67,
+    "hasIceCreamAddon": true,
+    "badge": "Chef Special",
+    "image": "/images/dishes/ferrero-rocher-stick-waffle.jpg",
+    "servingSize": "1 Stick",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "dark-chocolate-round-waffle",
+    "name": "Dark Chocolate Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 140,
+    "description": "Full circular Belgian waffle with deep pockets filled with hot, luscious dark chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 86,
+    "hasIceCreamAddon": true,
+    "badge": "Popular",
+    "image": "/images/dishes/dark-chocolate-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "milk-chocolate-round-waffle",
+    "name": "Milk Chocolate Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 140,
+    "description": "Golden crisp round waffle soaked in rich and creamy milk chocolate sauce.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 105,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/milk-chocolate-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "white-chocolate-round-waffle",
+    "name": "White Chocolate Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 140,
+    "description": "Warm, buttery waffle pockets overflowing with silky sweet Belgian white chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 124,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/white-chocolate-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "triple-chocolate-round-waffle",
+    "name": "Triple Chocolate Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 150,
+    "description": "Trio of luscious Belgian dark, milk, and white melted chocolates over crisp round waffle.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 143,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/triple-chocolate-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kitkat-crunchy-white-waffle",
+    "name": "Kitkat Crunchy White Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 160,
+    "description": "Velvety white chocolate glaze finished with crunchy chopped KitKat wafers.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 162,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/kitkat-crunchy-white-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kitkat-crunchy-dark-waffle",
+    "name": "Kitkat Crunchy Dark Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 160,
+    "description": "Dark chocolate covered waffle pockets loaded with crispy KitKat bites.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 71,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/kitkat-crunchy-dark-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "chocolate-overloaded-waffle",
+    "name": "Chocolate Overloaded Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 160,
+    "description": "Maximum chocolate indulgence with double-shot chocolate sauce, choco chips, and fudge.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 90,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/chocolate-overloaded-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "oreo-white-chocolate-waffle",
+    "name": "Oreo White Chocolate Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 160,
+    "description": "Classic cookies & cream waffle smothered in white chocolate and crumbled Oreo biscuits.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 109,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/oreo-white-chocolate-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "oreo-dark-chocolate-waffle",
+    "name": "Oreo Dark Chocolate Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 160,
+    "description": "Bittersweet dark chocolate pool loaded with crunchy dark cocoa Oreo biscuit pieces.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 128,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/oreo-dark-chocolate-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "choco-pie-round-waffle",
+    "name": "Choco Pie Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 160,
+    "description": "Warm Belgian waffle folded with chocolate coated marshmallow pie and extra chocolate sauce.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 147,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/choco-pie-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "naked-nutella-waffle",
+    "name": "Naked Nutella Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 160,
+    "description": "Generously smothered in genuine Italian Nutella hazelnut cocoa spread.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 56,
+    "hasIceCreamAddon": true,
+    "badge": "Must Try",
+    "image": "/images/dishes/naked-nutella-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "crunchy-kitkat-nutella-round-waffle",
+    "name": "Crunchy Kitkat Nutella Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 180,
+    "description": "Thick layer of Nutella topped with crunchy KitKat bars and chocolate shavings.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 75,
+    "hasIceCreamAddon": true,
+    "badge": "Chef Special",
+    "image": "/images/dishes/crunchy-kitkat-nutella-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "brownie-round-waffle",
+    "name": "Brownie Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 200,
+    "description": "Decadent combo of warm crispy waffle layered with freshly baked fudgy brownie chunks.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 94,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/brownie-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "blueberry-round-waffle",
+    "name": "Blueberry Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 180,
+    "description": "Tart and sweet wild blueberry compote over warm butter waffle with cream.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 113,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/blueberry-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "coffee-round-waffle",
+    "name": "Coffee Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 180,
+    "description": "Aromatic espresso mocha infusion drizzled across golden crisp round waffle.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 132,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/coffee-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "lotus-biscoff-round-waffle",
+    "name": "Lotus Biscoff Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 200,
+    "description": "Warm caramelized Belgian Biscoff spread sprinkled with crunchy Lotus cookie crumble.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 151,
+    "hasIceCreamAddon": true,
+    "badge": "Chef Special",
+    "image": "/images/dishes/lotus-biscoff-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "ferrero-rocher-round-waffle",
+    "name": "Ferrero Rocher Round Waffle",
+    "sectionId": "desserts",
+    "category": "Round Waffles",
+    "price": 200,
+    "description": "Royal dessert topped with whole Ferrero Rocher pralines, roasted hazelnuts, and warm Nutella.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 60,
+    "hasIceCreamAddon": true,
+    "badge": "Must Try",
+    "image": "/images/dishes/ferrero-rocher-round-waffle.jpg",
+    "servingSize": "1 Full Waffle",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "red-velvet-white-chocolate-round-waffle",
+    "name": "Red Velvet White Chocolate Round Waffle",
+    "sectionId": "desserts",
+    "category": "Red Velvet Waffles",
+    "price": 150,
+    "description": "Ruby red cocoa waffle paired luxuriously with silky sweet Belgian white chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 79,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/red-velvet-white-chocolate-round-waffle.jpg",
+    "servingSize": "1 Portion",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "red-velvet-dark-chocolate-round-waffle",
+    "name": "Red Velvet Dark Chocolate Round Waffle",
+    "sectionId": "desserts",
+    "category": "Red Velvet Waffles",
+    "price": 150,
+    "description": "Vibrant red velvet waffle contrasting with decadent dark chocolate fudge drizzle.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 98,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/red-velvet-dark-chocolate-round-waffle.jpg",
+    "servingSize": "1 Portion",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "red-velvet-milk-chocolate-round-waffle",
+    "name": "Red Velvet Milk Chocolate Round Waffle",
+    "sectionId": "desserts",
+    "category": "Red Velvet Waffles",
+    "price": 150,
+    "description": "Sweet cocoa red velvet waffle covered in creamy smooth milk chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 117,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/red-velvet-milk-chocolate-round-waffle.jpg",
+    "servingSize": "1 Portion",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "red-velvet-triple-chocolate-round-waffle",
+    "name": "Red Velvet Triple Chocolate Round Waffle",
+    "sectionId": "desserts",
+    "category": "Red Velvet Waffles",
+    "price": 160,
+    "description": "Crimson red waffle drizzled generously with dark, milk, and white melted chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 136,
+    "hasIceCreamAddon": true,
+    "badge": "Must Try",
+    "image": "/images/dishes/red-velvet-triple-chocolate-round-waffle.jpg",
+    "servingSize": "1 Portion",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "red-velvet-white-chocolate-stick-waffle",
+    "name": "Red Velvet White Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Red Velvet Waffles",
+    "price": 100,
+    "description": "Crisp red velvet waffle on a stick glazed in sweet Belgian white chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 155,
+    "hasIceCreamAddon": true,
+    "badge": "Popular",
+    "image": "/images/dishes/red-velvet-white-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Portion",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "red-velvet-dark-chocolate-stick-waffle",
+    "name": "Red Velvet Dark Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Red Velvet Waffles",
+    "price": 100,
+    "description": "Ruby cocoa stick waffle drenched in rich bittersweet dark chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 64,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/red-velvet-dark-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Portion",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "red-velvet-milk-chocolate-stick-waffle",
+    "name": "Red Velvet Milk Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Red Velvet Waffles",
+    "price": 100,
+    "description": "Warm red velvet waffle on a stick coated in sweet, silky milk chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 83,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/red-velvet-milk-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Portion",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "red-velvet-triple-chocolate-stick-waffle",
+    "name": "Red Velvet Triple Chocolate Stick Waffle",
+    "sectionId": "desserts",
+    "category": "Red Velvet Waffles",
+    "price": 120,
+    "description": "All three chocolates draped elegantly over a freshly baked red velvet stick waffle.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 102,
+    "hasIceCreamAddon": true,
+    "badge": "Chef Special",
+    "image": "/images/dishes/red-velvet-triple-chocolate-stick-waffle.jpg",
+    "servingSize": "1 Portion",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "white-chocolate-mini-pancakes",
+    "name": "White Chocolate Mini Pancakes",
+    "sectionId": "desserts",
+    "category": "Mini Pancakes",
+    "price": 120,
+    "description": "Fluffy bite-sized Dutch mini pancakes drenched in sweet, melted white chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 121,
+    "hasIceCreamAddon": true,
+    "badge": "Popular",
+    "image": "/images/dishes/white-chocolate-mini-pancakes.jpg",
+    "servingSize": "10 Pcs",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "dark-chocolate-mini-pancakes",
+    "name": "Dark Chocolate Mini Pancakes",
+    "sectionId": "desserts",
+    "category": "Mini Pancakes",
+    "price": 120,
+    "description": "Pillowy warm mini pancakes bathed in rich, dark chocolate sauce.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 140,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/dark-chocolate-mini-pancakes.jpg",
+    "servingSize": "10 Pcs",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "milk-chocolate-mini-pancakes",
+    "name": "Milk Chocolate Mini Pancakes",
+    "sectionId": "desserts",
+    "category": "Mini Pancakes",
+    "price": 120,
+    "description": "Golden bite-sized pancakes coated in creamy European milk chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 159,
+    "hasIceCreamAddon": true,
+    "badge": "Popular",
+    "image": "/images/dishes/milk-chocolate-mini-pancakes.jpg",
+    "servingSize": "10 Pcs",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "triple-chocolate-mini-pancakes",
+    "name": "Triple Chocolate Mini Pancakes",
+    "sectionId": "desserts",
+    "category": "Mini Pancakes",
+    "price": 140,
+    "description": "Platter of fluffy mini pancakes smothered in swirls of dark, milk, and white chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 68,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/triple-chocolate-mini-pancakes.jpg",
+    "servingSize": "10 Pcs",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kitkat-mini-pancakes",
+    "name": "Kitkat Mini Pancakes",
+    "sectionId": "desserts",
+    "category": "Mini Pancakes",
+    "price": 140,
+    "description": "Warm mini pancakes topped with sweet chocolate sauce and crunchy KitKat pieces.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 87,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/kitkat-mini-pancakes.jpg",
+    "servingSize": "10 Pcs",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "brownie-dark-chocolate-mini-pancakes",
+    "name": "Brownie Dark Chocolate Mini Pancakes",
+    "sectionId": "desserts",
+    "category": "Mini Pancakes",
+    "price": 170,
+    "description": "Decadent pairing of warm mini pancakes, rich brownie crumbles, and dark fudge.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 106,
+    "hasIceCreamAddon": true,
+    "badge": "Chef Special",
+    "image": "/images/dishes/brownie-dark-chocolate-mini-pancakes.jpg",
+    "servingSize": "10 Pcs",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "brownie-white-chocolate-mini-pancakes",
+    "name": "Brownie White Chocolate Mini Pancakes",
+    "sectionId": "desserts",
+    "category": "Mini Pancakes",
+    "price": 170,
+    "description": "Mini pancakes topped with fudgy chocolate brownie bits and silky white chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 125,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/brownie-white-chocolate-mini-pancakes.jpg",
+    "servingSize": "10 Pcs",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "nutella-mini-pancakes",
+    "name": "Nutella Mini Pancakes",
+    "sectionId": "desserts",
+    "category": "Mini Pancakes",
+    "price": 170,
+    "description": "Warm, fluffy mini pancakes lavishly coated in velvety Italian hazelnut Nutella.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 144,
+    "hasIceCreamAddon": true,
+    "badge": "Must Try",
+    "image": "/images/dishes/nutella-mini-pancakes.jpg",
+    "servingSize": "10 Pcs",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "white-chocolate-brownie",
+    "name": "White Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 120,
+    "description": "Warm, dense fudgy chocolate brownie drizzled with velvety white chocolate sauce.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 163,
+    "hasIceCreamAddon": true,
+    "badge": "Popular",
+    "image": "/images/dishes/white-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "dark-chocolate-brownie",
+    "name": "Dark Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 120,
+    "description": "Intense double chocolate brownie with gooey center and rich dark chocolate fudge.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 72,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/dark-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "milk-chocolate-brownie",
+    "name": "Milk Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 120,
+    "description": "Fudgy cocoa square smothered in silky sweet milk chocolate glaze.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 91,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/milk-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "triple-chocolate-brownie",
+    "name": "Triple Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 140,
+    "description": "Warm fudgy brownie crowned with dark, milk, and white chocolate ganache swirls.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 110,
+    "hasIceCreamAddon": true,
+    "badge": "Must Try",
+    "image": "/images/dishes/triple-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kitkat-white-chocolate-brownie",
+    "name": "Kitkat White Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 150,
+    "description": "Fudgy brownie covered with white chocolate sauce and crushed crispy KitKat bars.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 129,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/kitkat-white-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kitkat-dark-chocolate-brownie",
+    "name": "Kitkat Dark Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 150,
+    "description": "Rich dark chocolate drenched brownie loaded with crispy KitKat wafer bites.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 148,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/kitkat-dark-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "oreo-dark-chocolate-brownie",
+    "name": "Oreo Dark Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 150,
+    "description": "Warm chocolate brownie topped with bittersweet dark fudge and crunchy Oreo cookie crumbs.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 57,
+    "hasIceCreamAddon": true,
+    "badge": "Popular",
+    "image": "/images/dishes/oreo-dark-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "oreo-white-chocolate-brownie",
+    "name": "Oreo White Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 150,
+    "description": "Cookies and cream brownie smothered in creamy white chocolate and crushed Oreos.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 76,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/oreo-white-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "chocopie-white-chocolate-brownie",
+    "name": "Chocopie White Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 150,
+    "description": "Warm brownie combined with soft marshmallow chocopie and white chocolate sauce.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 95,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/chocopie-white-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "chocopie-dark-chocolate-brownie",
+    "name": "Chocopie Dark Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 150,
+    "description": "Double chocolate delight with gooey marshmallow chocopie chunks and dark fudge.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 114,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/chocopie-dark-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kinder-joy-dark-chocolate-brownie",
+    "name": "Kinder Joy Dark Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 160,
+    "description": "Fudgy dark chocolate brownie topped with creamy Kinder Joy chocolate drops.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 133,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/kinder-joy-dark-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "kinder-joy-white-chocolate-brownie",
+    "name": "Kinder Joy White Chocolate Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 160,
+    "description": "Sweet white chocolate bathed brownie topped with crispy milky Kinder Joy pralines.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 152,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/kinder-joy-white-chocolate-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "belgium-nutella-brownie",
+    "name": "Belgium Nutella Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 170,
+    "description": "Fudgy brownie slathered with pure hazelnut Nutella spread and roasted hazelnuts.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 61,
+    "hasIceCreamAddon": true,
+    "badge": "Chef Special",
+    "image": "/images/dishes/belgium-nutella-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "belgium-nut-rocher-brownie",
+    "name": "Belgium Nut-Rocher Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 180,
+    "description": "Gourmet warm brownie topped with crushed Ferrero Rocher, Nutella, and toasted nuts.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 80,
+    "hasIceCreamAddon": true,
+    "badge": "Chef Special",
+    "image": "/images/dishes/belgium-nut-rocher-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "biscoff-brownie",
+    "name": "Biscoff Brownie",
+    "sectionId": "desserts",
+    "category": "Brownies",
+    "price": 200,
+    "description": "Warm brownie smothered in spiced caramelized Lotus Biscoff spread and biscuit crunch.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 99,
+    "hasIceCreamAddon": true,
+    "badge": "Must Try",
+    "image": "/images/dishes/biscoff-brownie.jpg",
+    "servingSize": "1 Piece",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "red-velvet-waffle-cake-single-layer",
+    "name": "Red Velvet Waffle Cake (Single Layer)",
+    "sectionId": "desserts",
+    "category": "Waffle Cakes",
+    "price": 280,
+    "description": "Artisan single-layer red velvet waffle cake decorated with white chocolate piping and crumbs.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 118,
+    "hasIceCreamAddon": true,
+    "badge": "Chef Special",
+    "image": "/images/dishes/red-velvet-waffle-cake-single-layer.jpg",
+    "servingSize": "Serves 2-3",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "chocolate-waffle-cake-single-layer",
+    "name": "Chocolate Waffle Cake (Single Layer)",
+    "sectionId": "desserts",
+    "category": "Waffle Cakes",
+    "price": 260,
+    "description": "Full single-tier rich chocolate waffle cake glazed with Belgian chocolate ganache.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 137,
+    "hasIceCreamAddon": true,
+    "badge": "Popular",
+    "image": "/images/dishes/chocolate-waffle-cake-single-layer.jpg",
+    "servingSize": "Serves 2-3",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "red-velvet-waffle-cake-double-layer",
+    "name": "Red Velvet Waffle Cake (Double Layer)",
+    "sectionId": "desserts",
+    "category": "Waffle Cakes",
+    "price": 450,
+    "description": "Double-decked celebration red velvet waffle cake with layers of cream cheese and chocolate.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 156,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/red-velvet-waffle-cake-double-layer.jpg",
+    "servingSize": "Serves 4-6",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "chocolate-waffle-cake-double-layer",
+    "name": "Chocolate Waffle Cake (Double Layer)",
+    "sectionId": "desserts",
+    "category": "Waffle Cakes",
+    "price": 400,
+    "description": "Two tiers of crisp Belgian chocolate waffles filled with molten chocolate fudge.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 65,
+    "hasIceCreamAddon": true,
+    "badge": "Must Try",
+    "image": "/images/dishes/chocolate-waffle-cake-double-layer.jpg",
+    "servingSize": "Serves 4-6",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "classic-traditional-kunafa",
+    "name": "Classic Traditional Kunafa",
+    "sectionId": "desserts",
+    "category": "Kunafa",
+    "price": 150,
+    "description": "Golden crispy shredded phyllo pastry baked with gooey melted sweet cheese, soaked in fragrant sugar syrup and topped with crushed pistachios.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 84,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/classic-traditional-kunafa.jpg",
+    "servingSize": "1 Plate",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "tender-coconut-kunafa",
+    "name": "Tender Coconut Kunafa",
+    "sectionId": "desserts",
+    "category": "Kunafa",
+    "price": 170,
+    "description": "Crispy golden kataifi pastry filled with refreshing tender coconut malai creme.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 103,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/tender-coconut-kunafa.jpg",
+    "servingSize": "1 Plate",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "naughty-nutella-kunafa",
+    "name": "Naughty Nutella Kunafa",
+    "sectionId": "desserts",
+    "category": "Kunafa",
+    "price": 180,
+    "description": "Crispy warm kunafa generously blanketed with gooey melted Nutella hazelnut spread.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 122,
+    "hasIceCreamAddon": true,
+    "badge": "Must Try",
+    "image": "/images/dishes/naughty-nutella-kunafa.jpg",
+    "servingSize": "1 Plate",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "shahi-rabdi-kunafa",
+    "name": "Shahi Rabdi Kunafa",
+    "sectionId": "desserts",
+    "category": "Kunafa",
+    "price": 170,
+    "description": "Royal Middle Eastern dessert paired with rich, slow-simmered Indian malai rabdi and saffron.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 141,
+    "hasIceCreamAddon": true,
+    "badge": "Chef Special",
+    "image": "/images/dishes/shahi-rabdi-kunafa.jpg",
+    "servingSize": "1 Plate",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "blueberry-kunafa",
+    "name": "Blueberry Kunafa",
+    "sectionId": "desserts",
+    "category": "Kunafa",
+    "price": 180,
+    "description": "Crisp buttery kunafa crowned with tangy sweet blueberry compote.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.7,
+    "ratingCount": 160,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/blueberry-kunafa.jpg",
+    "servingSize": "1 Plate",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "strawberry-kunafa",
+    "name": "Strawberry Kunafa",
+    "sectionId": "desserts",
+    "category": "Kunafa",
+    "price": 180,
+    "description": "Warm golden kunafa layered with lush real strawberry fruit preserve.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.8,
+    "ratingCount": 69,
+    "hasIceCreamAddon": true,
+    "image": "/images/dishes/strawberry-kunafa.jpg",
+    "servingSize": "1 Plate",
+    "prepTime": "8-12 min"
+  },
+  {
+    "id": "half-n-half-kunafa",
+    "name": "Half N Half Kunafa",
+    "sectionId": "desserts",
+    "category": "Kunafa",
+    "price": 200,
+    "description": "The ultimate indulgence featuring half Nutella and half creamy traditional rabdi / cheese.",
+    "ingredients": [
+      "Fresh Ingredients",
+      "Belgian Chocolate / Pure Ingredients"
+    ],
+    "isVeg": true,
+    "isAvailable": true,
+    "rating": 4.9,
+    "ratingCount": 88,
+    "hasIceCreamAddon": true,
+    "badge": "Bestseller",
+    "image": "/images/dishes/half-n-half-kunafa.jpg",
+    "servingSize": "1 Plate",
+    "prepTime": "8-12 min"
+  }
+];
