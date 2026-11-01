@@ -40,25 +40,15 @@ export const StickyNav: React.FC<StickyNavProps> = ({
       <div className="max-w-2xl mx-auto px-4 py-2.5 flex items-center justify-between gap-2">
         <button
           onClick={onGoHome}
-          className="flex items-center gap-2 text-left group focus:outline-none"
+          className="flex items-center gap-2.5 text-left group focus:outline-none"
           title="Back to Welcome Landing"
         >
-          <div className="w-8 h-8 rounded-full bg-[var(--theme-primary)] text-white flex items-center justify-center font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[var(--theme-primary)] text-white flex items-center justify-center font-bold text-sm sm:text-base shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
             ☕
           </div>
-          <div>
-            <h1 className="font-bold text-sm sm:text-base leading-tight tracking-tight text-[var(--theme-text)]">
-              {CAFE_SETTINGS.name}
-            </h1>
-            <div className="flex items-center gap-1.5 text-[11px] text-[var(--theme-text-secondary)] font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Digital Menu</span>
-              <span>•</span>
-              <span className="text-[10px] bg-black/5 px-1.5 py-0.2 rounded font-semibold uppercase tracking-wider">
-                Scan & Browse
-              </span>
-            </div>
-          </div>
+          <h1 className="font-bold text-sm sm:text-base tracking-tight text-[var(--theme-text)] truncate">
+            {CAFE_SETTINGS.name}
+          </h1>
         </button>
 
         {/* Action icons */}
