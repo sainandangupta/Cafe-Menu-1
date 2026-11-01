@@ -21,7 +21,7 @@ export const LandingCards: React.FC<LandingCardsProps> = ({
   const { isPlaying, openPlayerModal } = useMusic();
 
   return (
-    <div className="min-h-screen w-full bg-[#FAF5EF] flex flex-col justify-between p-4 sm:p-6 select-none">
+    <div className="min-h-screen w-full bg-[#FAF5EF] flex flex-col justify-between p-4 sm:p-6 overflow-x-clip">
       {/* Top Header branding */}
       <div className="max-w-3xl w-full mx-auto pt-2 pb-3 text-center">
         <div className="flex items-center justify-between mb-2">

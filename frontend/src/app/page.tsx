@@ -215,7 +215,7 @@ export default function Home() {
   return (
     <div
       data-theme={activeSection}
-      className="min-h-screen flex flex-col bg-[var(--theme-bg)] text-[var(--theme-text)] transition-colors duration-500 select-none"
+      className="min-h-screen flex flex-col bg-[var(--theme-bg)] text-[var(--theme-text)] transition-colors duration-500 overflow-x-clip"
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
