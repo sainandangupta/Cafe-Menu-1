@@ -37,8 +37,7 @@ export const PlaylistManagerModal: React.FC<PlaylistManagerModalProps> = ({
     if (!searchQuery.trim()) return;
     setIsSearching(true);
     try {
-      const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-      const res = await fetch(`${apiBase}/api/music/search?q=${encodeURIComponent(searchQuery)}`);
+      const res = await fetch(`/api/music/search?q=${encodeURIComponent(searchQuery)}`);
       const data = await res.json();
       if (data.success && data.data) {
         setSearchResults(data.data);

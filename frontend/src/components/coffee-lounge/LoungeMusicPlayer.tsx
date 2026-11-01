@@ -72,8 +72,7 @@ export const LoungeMusicPlayer: React.FC<LoungeMusicPlayerProps> = (props) => {
     if (!searchQuery.trim()) return;
     setIsSearching(true);
     try {
-      const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-      const res = await fetch(`${apiBase}/api/music/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      const res = await fetch(`/api/music/search?q=${encodeURIComponent(searchQuery.trim())}`);
       const data = await res.json();
       if (data.success && data.data && data.data.length > 0) {
         setSearchResults(data.data);
