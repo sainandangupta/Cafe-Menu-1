@@ -15,6 +15,21 @@ let ratingsData = [];
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
+// 0. Root Status
+app.get('/', (req, res) => {
+  res.json({
+    name: 'Velvet Bean Cafe & Waffleria Backend API',
+    status: 'online',
+    endpoints: {
+      health: '/api/health',
+      menu: '/api/menu',
+      sections: '/api/sections',
+      settings: '/api/settings',
+      musicSearch: '/api/music/search?q=laufey'
+    }
+  });
+});
+
 // 1. Health Check
 app.get('/api/health', (req, res) => {
   res.json({
