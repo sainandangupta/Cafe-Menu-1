@@ -1,6 +1,22 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { MusicProvider } from '@/context/MusicContext';
+import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Velvet Bean Cafe & Waffleria | Digital QR Menu',
@@ -25,16 +41,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full antialiased scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="min-h-full flex flex-col font-sans">
+    <html
+      lang="en"
+      className={cn(
+        "h-full antialiased scroll-smooth",
+        outfit.variable,
+        plusJakartaSans.variable
+      )}
+    >
+      <body className={cn("min-h-full flex flex-col font-sans", outfit.variable, plusJakartaSans.variable)}>
         <MusicProvider>
           {children}
         </MusicProvider>

@@ -127,7 +127,7 @@ export default function Home() {
   // If user hasn't selected a section yet, show the Landing Options
   if (!hasEnteredMenu) {
     return (
-      <main className="w-full min-h-screen">
+      <main data-theme="food" className="w-full min-h-screen">
         <LandingCards
           onSelectSection={handleSelectSection}
           onOpenSearch={() => setIsSearchOpen(true)}
