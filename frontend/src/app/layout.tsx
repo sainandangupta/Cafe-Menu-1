@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils";
 const outfit = Outfit({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-heading',
+  variable: '--font-outfit',
   display: 'swap',
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-sans',
+  variable: '--font-plus-jakarta',
   display: 'swap',
 });
 
@@ -25,6 +25,14 @@ export const metadata: Metadata = {
     title: 'Velvet Bean Cafe & Waffleria — Digital Menu',
     description: 'Scan & Browse our full cafe menu with live prices, photos, and ratings.',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Velvet Bean Cafe & Waffleria — Digital Menu',
+    description: 'Scan & Browse our full cafe menu with live prices, photos, and ratings.',
+  },
+  icons: {
+    icon: '/favicon.ico',
   },
 };
 
@@ -57,7 +65,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={cn("min-h-full flex flex-col font-sans", outfit.variable, plusJakartaSans.variable)}>
+      <body className="min-h-full flex flex-col font-sans">
         <MusicProvider>
           {children}
         </MusicProvider>
