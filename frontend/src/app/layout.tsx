@@ -43,6 +43,7 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
+// Production release: mobile fonts, hex fallbacks, and resilient music proxy
 export default function RootLayout({
   children,
 }: {
