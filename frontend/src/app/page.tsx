@@ -1,38 +1,68 @@
 'use client';
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { MENU_ITEMS, SECTIONS, MenuItem, CAFE_SETTINGS } from '@/data/mockMenu';
 import { StickyNav } from '@/components/layout/StickyNav';
 import { CategoryPills } from '@/components/menu/CategoryPills';
 import { MenuItemCard } from '@/components/menu/MenuItemCard';
 import { CoffeeLoungeView } from '@/components/coffee-lounge/CoffeeLoungeView';
-import { ItemDetailSheet } from '@/components/menu/ItemDetailSheet';
-import { PaymentQRModal } from '@/components/modals/PaymentQRModal';
-import { SearchModal } from '@/components/modals/SearchModal';
-import { WifiQRModal } from '@/components/modals/WifiQRModal';
 import { LandingCards } from '@/components/landing/LandingCards';
-import { MusicProvider } from '@/context/MusicContext';
 import { GlobalMiniPlayer } from '@/components/coffee-lounge/GlobalMiniPlayer';
-import { GlobalMusicModal } from '@/components/coffee-lounge/GlobalMusicModal';
 import { Toaster } from 'react-hot-toast';
-import { ChevronLeft, ChevronRight, Sparkles, MapPin, Clock, Phone, ArrowUp } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, Clock, Phone, ArrowUp } from 'lucide-react';
+
+// Code-split heavy modals dynamically to keep initial bundle ultra-light and fast
+const ItemDetailSheet = dynamic(
+  () => import('@/components/menu/ItemDetailSheet').then((m) => m.ItemDetailSheet),
+  { ssr: false }
+);
+const PaymentQRModal = dynamic(
+  () => import('@/components/modals/PaymentQRModal').then((m) => m.PaymentQRModal),
+  { ssr: false }
+);
+const SearchModal = dynamic(
+  () => import('@/components/modals/SearchModal').then((m) => m.SearchModal),
+  { ssr: false }
+);
+const WifiQRModal = dynamic(
+  () => import('@/components/modals/WifiQRModal').then((m) => m.WifiQRModal),
+  { ssr: false }
+);
+const GlobalMusicModal = dynamic(
+  () => import('@/components/coffee-lounge/GlobalMusicModal').then((m) => m.GlobalMusicModal),
+  { ssr: false }
+);
+
+const PAGE_SIZE = 24;
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<'food' | 'drinks' | 'desserts' | 'coffee_tea'>('food');
   const [hasEnteredMenu, setHasEnteredMenu] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [vegOnly, setVegOnly] = useState(false);
-  const [menuItems, setMenuItems] = useState<MenuItem[]>(MENU_ITEMS);
+  const [menuItems] = useState<MenuItem[]>(MENU_ITEMS);
 
-  // Modals
+  // Progressive loading batch count for high performance across 180+ items
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+
+  // Modals state
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   const [isPayQROpen, setIsPayQROpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isWifiQROpen, setIsWifiQROpen] = useState(false);
 
-  // Touch gesture handling for smooth horizontal section swipe without breaking vertical scroll
+  // Touch gesture handling
   const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Restore preferences from localStorage safely
+  useEffect(() => {
+    try {
+      const storedVeg = localStorage.getItem('cafe_veg_only');
+      if (storedVeg !== null) setVegOnly(storedVeg === 'true');
+    } catch {}
+  }, []);
 
   // Scroll listener for back to top button
   useEffect(() => {
@@ -43,12 +73,24 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Reset pagination whenever section, category, or filter changes
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [activeSection, activeCategory, vegOnly]);
+
   // Update categories for active section
   const categoriesForSection = useMemo(() => {
     const sectionItems = menuItems.filter((i) => i.sectionId === activeSection);
-    const cats = Array.from(new Set(sectionItems.map((i) => i.category)));
-    return cats;
+    return Array.from(new Set(sectionItems.map((i) => i.category)));
   }, [menuItems, activeSection]);
+
+  const handleToggleVegOnly = () => {
+    setVegOnly((prev) => {
+      const next = !prev;
+      try { localStorage.setItem('cafe_veg_only', String(next)); } catch {}
+      return next;
+    });
+  };
 
   // Reset category to 'All' when section changes
   const handleSelectSection = (sec: 'food' | 'drinks' | 'desserts' | 'coffee_tea') => {
@@ -83,7 +125,12 @@ export default function Home() {
     });
   }, [menuItems, activeSection, activeCategory, vegOnly]);
 
-  // Touch handlers for natural mobile swipe between menu sections
+  // Paged items for lightweight rendering
+  const pagedItems = useMemo(() => {
+    return displayedItems.slice(0, visibleCount);
+  }, [displayedItems, visibleCount]);
+
+  // Touch handlers for mobile swipe between menu sections
   const onTouchStart = (e: React.TouchEvent) => {
     const touch = e.touches[0];
     touchStartRef.current = {
@@ -102,26 +149,19 @@ export default function Home() {
 
     touchStartRef.current = null;
 
-    // Must be a decisive horizontal swipe:
-    // 1. Min 60px horizontal distance
-    // 2. Horizontal movement at least 1.8x greater than vertical movement
-    // 3. Completed in under 500ms
     if (
       Math.abs(deltaX) > 60 &&
       Math.abs(deltaX) > Math.abs(deltaY) * 1.8 &&
       duration < 500
     ) {
       if (deltaX < 0) {
-        // Swiped left -> next section
         handleNextSection();
       } else {
-        // Swiped right -> prev section
         handlePrevSection();
       }
     }
   };
 
-  // Handle menu items (static data)
   const currentSectionMeta = SECTIONS.find((s) => s.id === activeSection)!;
 
   // If user hasn't selected a section yet, show the Landing Options
@@ -135,27 +175,33 @@ export default function Home() {
           onOpenWifiQR={() => setIsWifiQROpen(true)}
         />
 
-        {/* Global Modals */}
-        <SearchModal
-          isOpen={isSearchOpen}
-          onClose={() => setIsSearchOpen(false)}
-          items={menuItems}
-          onSelectItem={(item) => {
-            setActiveSection(item.sectionId);
-            setSelectedItem(item);
-            setHasEnteredMenu(true);
-          }}
-        />
+        {/* Global Modals (Loaded on-demand) */}
+        {isSearchOpen && (
+          <SearchModal
+            isOpen={isSearchOpen}
+            onClose={() => setIsSearchOpen(false)}
+            items={menuItems}
+            onSelectItem={(item) => {
+              setActiveSection(item.sectionId);
+              setSelectedItem(item);
+              setHasEnteredMenu(true);
+            }}
+          />
+        )}
 
-        <PaymentQRModal
-          isOpen={isPayQROpen}
-          onClose={() => setIsPayQROpen(false)}
-        />
+        {isPayQROpen && (
+          <PaymentQRModal
+            isOpen={isPayQROpen}
+            onClose={() => setIsPayQROpen(false)}
+          />
+        )}
 
-        <WifiQRModal
-          isOpen={isWifiQROpen}
-          onClose={() => setIsWifiQROpen(false)}
-        />
+        {isWifiQROpen && (
+          <WifiQRModal
+            isOpen={isWifiQROpen}
+            onClose={() => setIsWifiQROpen(false)}
+          />
+        )}
 
         {/* Global Persistent Lounge Music Controls & Modals */}
         <GlobalMiniPlayer />
@@ -193,7 +239,7 @@ export default function Home() {
           onSelectItem={setSelectedItem}
           sectionMeta={currentSectionMeta}
           vegOnly={vegOnly}
-          onToggleVegOnly={() => setVegOnly(!vegOnly)}
+          onToggleVegOnly={handleToggleVegOnly}
         />
       ) : (
         <>
@@ -203,11 +249,11 @@ export default function Home() {
             activeCategory={activeCategory}
             onSelectCategory={setActiveCategory}
             vegOnly={vegOnly}
-            onToggleVegOnly={() => setVegOnly(!vegOnly)}
+            onToggleVegOnly={handleToggleVegOnly}
           />
 
           {/* 3. SECTION ATMOSPHERE BANNER */}
-          <div className="max-w-2xl mx-auto w-full px-4 pt-4 pb-2">
+          <div className="max-w-5xl mx-auto w-full px-4 pt-4 pb-2">
             <div className="relative rounded-2xl overflow-hidden p-4 shadow-sm border border-[var(--theme-card-border)] bg-[var(--theme-card)]">
               <div className="flex items-center justify-between gap-3">
                 <div>
@@ -233,7 +279,7 @@ export default function Home() {
           </div>
 
           {/* 4. PACKING CHARGES REMINDER BANNER */}
-          <div className="max-w-2xl mx-auto w-full px-4 pb-1">
+          <div className="max-w-5xl mx-auto w-full px-4 pb-1">
             <div className="text-[11px] text-[var(--theme-text-secondary)] bg-black/[0.03] px-3 py-1.5 rounded-xl flex items-center justify-between border border-black/5">
               <span>📦 Packing charges extra (₹10 – ₹20 per container)</span>
               <span className="font-semibold underline cursor-pointer" onClick={() => setIsPayQROpen(true)}>
@@ -242,8 +288,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 5. MENU ITEMS LIST (Vertical Scrolling) */}
-          <main className="max-w-2xl mx-auto w-full px-4 py-3 flex-1 space-y-3">
+          {/* 5. RESPONSIVE MENU ITEMS GRID (Mobile 1-col, Tablet 2-col, Desktop 3-col) */}
+          <main className="max-w-5xl mx-auto w-full px-4 py-3 flex-1">
             {displayedItems.length === 0 ? (
               <div className="text-center py-16 rounded-3xl bg-[var(--theme-card)] border border-[var(--theme-card-border)] p-6 my-4">
                 <span className="text-3xl mb-2 block">🍽️</span>
@@ -264,13 +310,29 @@ export default function Home() {
                 </button>
               </div>
             ) : (
-              displayedItems.map((item) => (
-                <MenuItemCard
-                  key={item.id}
-                  item={item}
-                  onClick={() => setSelectedItem(item)}
-                />
-              ))
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3.5">
+                {pagedItems.map((item) => (
+                  <MenuItemCard
+                    key={item.id}
+                    item={item}
+                    onClick={() => setSelectedItem(item)}
+                  />
+                ))}
+
+                {/* Progressive Batch Loading */}
+                {visibleCount < displayedItems.length && (
+                  <div className="col-span-full pt-4 pb-6 text-center">
+                    <button
+                      onClick={() => setVisibleCount((prev) => prev + PAGE_SIZE)}
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[var(--theme-card)] border border-[var(--theme-card-border)] hover:border-[var(--theme-primary)] text-xs font-bold text-[var(--theme-text)] shadow-sm hover:shadow transition-all cursor-pointer active:scale-95"
+                    >
+                      <span>Showing {pagedItems.length} of {displayedItems.length} dishes</span>
+                      <span>•</span>
+                      <span className="text-[var(--theme-primary)] font-extrabold">Load More Dishes ↓</span>
+                    </button>
+                  </div>
+                )}
+              </div>
             )}
           </main>
         </>
@@ -306,7 +368,7 @@ export default function Home() {
         {showScrollTop && (
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-11 h-11 rounded-full bg-white text-zinc-800 shadow-lg border border-black/10 flex items-center justify-center active:scale-95 transition-all"
+            className="w-11 h-11 rounded-full bg-white text-zinc-800 shadow-lg border border-black/10 flex items-center justify-center active:scale-95 transition-all cursor-pointer"
             aria-label="Scroll to top"
           >
             <ArrowUp className="w-5 h-5" />
@@ -315,48 +377,53 @@ export default function Home() {
 
         <button
           onClick={() => setIsPayQROpen(true)}
-          className="px-4 py-2.5 rounded-full bg-[var(--theme-primary)] text-white shadow-xl flex items-center gap-2 text-xs font-bold active:scale-95 hover:opacity-95 transition-all border border-white/20"
+          className="px-4 py-2.5 rounded-full bg-[var(--theme-primary)] text-white shadow-xl flex items-center gap-2 text-xs font-bold active:scale-95 hover:opacity-95 transition-all border border-white/20 cursor-pointer"
           aria-label="Open Payment QR"
         >
-          <span>💳</span>
+          <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
           <span>Pay QR</span>
         </button>
       </div>
 
-      {/* 7. BOTTOM SHEET DISH DETAIL MODAL */}
-      <ItemDetailSheet
-        item={selectedItem}
-        onClose={() => setSelectedItem(null)}
-      />
+      {/* MODALS LOADED ON DEMAND */}
+      {selectedItem && (
+        <ItemDetailSheet
+          item={selectedItem}
+          onClose={() => setSelectedItem(null)}
+        />
+      )}
 
-      {/* 8. PAYMENT QR MODAL */}
-      <PaymentQRModal
-        isOpen={isPayQROpen}
-        onClose={() => setIsPayQROpen(false)}
-      />
+      {isPayQROpen && (
+        <PaymentQRModal
+          isOpen={isPayQROpen}
+          onClose={() => setIsPayQROpen(false)}
+        />
+      )}
 
-      {/* 9. SEARCH MODAL */}
-      <SearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        items={menuItems}
-        onSelectItem={(item) => {
-          setActiveSection(item.sectionId);
-          setSelectedItem(item);
-        }}
-      />
+      {isSearchOpen && (
+        <SearchModal
+          isOpen={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+          items={menuItems}
+          onSelectItem={(item) => {
+            setActiveSection(item.sectionId);
+            setSelectedItem(item);
+            setHasEnteredMenu(true);
+          }}
+        />
+      )}
 
-      {/* 10. WIFI QR MODAL */}
-      <WifiQRModal
-        isOpen={isWifiQROpen}
-        onClose={() => setIsWifiQROpen(false)}
-      />
+      {isWifiQROpen && (
+        <WifiQRModal
+          isOpen={isWifiQROpen}
+          onClose={() => setIsWifiQROpen(false)}
+        />
+      )}
 
-      {/* 11. GLOBAL PERSISTENT LOUNGE MUSIC CONTROLS & MODALS */}
+      {/* Global Persistent Lounge Music Controls & Modals */}
       <GlobalMiniPlayer />
       <GlobalMusicModal />
 
-      {/* TOAST NOTIFICATIONS */}
       <Toaster position="top-center" />
     </div>
   );

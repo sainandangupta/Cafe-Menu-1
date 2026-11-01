@@ -23,7 +23,7 @@ export const LandingCards: React.FC<LandingCardsProps> = ({
   return (
     <div className="min-h-screen w-full bg-[#FAF5EF] flex flex-col justify-between p-4 sm:p-6 select-none">
       {/* Top Header branding */}
-      <div className="max-w-md w-full mx-auto pt-2 pb-3 text-center">
+      <div className="max-w-3xl w-full mx-auto pt-2 pb-3 text-center">
         <div className="flex items-center justify-between mb-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-900 text-xs font-bold uppercase tracking-wider border border-amber-500/20">
             <Sparkles className="w-3.5 h-3.5 text-amber-600" />
@@ -53,12 +53,12 @@ export const LandingCards: React.FC<LandingCardsProps> = ({
       </div>
 
       {/* FOUR PROMINENT INTERACTIVE SECTION CARDS */}
-      <div className="max-w-md w-full mx-auto space-y-3 flex-1 flex flex-col justify-center my-1">
+      <div className="max-w-4xl w-full mx-auto grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 flex-1 my-auto py-2">
         {SECTIONS.map((sec) => (
           <div
             key={sec.id}
             onClick={() => onSelectSection(sec.id)}
-            className="group relative h-28 sm:h-32 rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 transform active:scale-[0.98] border border-white/20"
+            className="group relative h-28 sm:h-36 rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 transform active:scale-[0.98] border border-white/20"
           >
             {/* Background Cover Image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -110,7 +110,7 @@ export const LandingCards: React.FC<LandingCardsProps> = ({
       </div>
 
       {/* Bottom Quick Utilities Bar */}
-      <div className="max-w-md w-full mx-auto pt-3 pb-2 flex items-center justify-between gap-2 border-t border-black/5">
+      <div className="max-w-3xl w-full mx-auto pt-3 pb-2 flex items-center justify-between gap-2 border-t border-black/5">
         <button
           onClick={onOpenSearch}
           className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-2xl bg-white shadow-xs border border-zinc-200 text-xs font-bold text-zinc-700 hover:bg-zinc-50 active:scale-95 transition-all"

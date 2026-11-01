@@ -37,7 +37,7 @@ export const StickyNav: React.FC<StickyNavProps> = ({
   return (
     <header className="sticky top-0 z-40 w-full glass-panel border-b border-black/5 shadow-sm transition-colors duration-300">
       {/* Top row: Cafe branding + actions */}
-      <div className="max-w-2xl mx-auto px-4 py-2.5 flex items-center justify-between gap-2">
+      <div className="max-w-5xl mx-auto px-4 py-2.5 flex items-center justify-between gap-2">
         <button
           onClick={onGoHome}
           className="flex items-center gap-2.5 text-left group focus:outline-none"
@@ -106,7 +106,7 @@ export const StickyNav: React.FC<StickyNavProps> = ({
       </div>
 
       {/* Second row: The 4 Main Sections Tabs [ FOOD ] [ DRINKS ] [ WAFFLES ] [ ☕ COFFEE & TEA ] */}
-      <div className="max-w-2xl mx-auto px-2 pb-2 relative flex items-center">
+      <div className="max-w-5xl mx-auto px-2 pb-2 relative flex items-center">
         {/* Left Arrow & Soft Gradient Fade */}
         <div
           className={`absolute left-0 top-0 bottom-2 z-20 flex items-center pr-6 pl-1 bg-gradient-to-r from-[var(--theme-surface)] via-[var(--theme-surface)]/80 to-transparent transition-all duration-300 pointer-events-none ${

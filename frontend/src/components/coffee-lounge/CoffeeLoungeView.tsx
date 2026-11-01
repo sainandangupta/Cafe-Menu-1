@@ -129,7 +129,7 @@ export const CoffeeLoungeView: React.FC<CoffeeLoungeViewProps> = ({
   );
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 pt-3 pb-16 space-y-6 relative">
+    <div className="w-full max-w-5xl mx-auto px-4 pt-3 pb-16 space-y-6 relative">
       {/* ─── MUSIC-REACTIVE AMBIENT GLOW OVERLAY ─── */}
       {isPlayingMusic && (
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -372,9 +372,9 @@ export const CoffeeLoungeView: React.FC<CoffeeLoungeViewProps> = ({
       </div>
 
       {/* ─── 6. CURATED MENU SECTIONS (COFFEE, TEA, COLD BREW) ─── */}
-      <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {coffeeLoungeItems.length === 0 ? (
-          <div className="text-center py-14 rounded-3xl bg-white border border-[#D9B98C]/60 p-6 my-2 shadow-sm">
+          <div className="col-span-full text-center py-14 rounded-3xl bg-white border border-[#D9B98C]/60 p-6 my-2 shadow-sm">
             <span className="text-4xl mb-3 block">☕</span>
             <h3 className="font-bold text-base text-[#3B2922]">No drinks found for this selection</h3>
             <p className="text-xs text-[#634F46] mt-1 max-w-sm mx-auto">
