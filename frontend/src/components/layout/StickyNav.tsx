@@ -35,28 +35,28 @@ export const StickyNav: React.FC<StickyNavProps> = ({
 
   const { isPlaying, currentSong, openPlayerModal } = useMusic();
   return (
-    <header className="sticky top-0 z-40 w-full glass-panel border-b border-black/5 shadow-sm transition-colors duration-300">
+    <header className="sticky top-0 z-40 w-full max-w-full overflow-hidden glass-panel border-b border-black/5 shadow-sm transition-colors duration-300">
       {/* Top row: Cafe branding + actions */}
-      <div className="max-w-5xl mx-auto px-4 py-2.5 flex items-center justify-between gap-2">
+      <div className="max-w-5xl mx-auto px-3 sm:px-4 py-2 flex items-center justify-between gap-1.5 sm:gap-2">
         <button
           onClick={onGoHome}
-          className="flex items-center gap-2.5 text-left group focus:outline-none"
+          className="flex items-center gap-2 text-left group focus:outline-none min-w-0 flex-1 mr-1 sm:mr-2"
           title="Back to Welcome Landing"
         >
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[var(--theme-primary)] text-white flex items-center justify-center font-bold text-sm sm:text-base shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+          <div className="w-8 h-8 rounded-full bg-[var(--theme-primary)] text-white flex items-center justify-center font-bold text-sm shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
             ☕
           </div>
-          <h1 className="font-bold text-sm sm:text-base tracking-tight text-[var(--theme-text)] truncate">
+          <h1 className="font-bold text-xs xs:text-sm sm:text-base tracking-tight text-[var(--theme-text)] truncate min-w-0">
             {CAFE_SETTINGS.name}
           </h1>
         </button>
 
         {/* Action icons */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex-shrink-0 flex items-center gap-1 sm:gap-1.5">
           {/* Global Lounge Music Button */}
           <button
             onClick={openPlayerModal}
-            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all shadow-xs relative cursor-pointer active:scale-95 ${
+            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all shadow-xs relative cursor-pointer active:scale-95 ${
               isPlaying
                 ? 'bg-amber-500 text-white shadow-sm ring-2 ring-amber-400/50'
                 : 'bg-[var(--theme-pill-bg)] text-[var(--theme-text)] hover:opacity-80'
@@ -64,7 +64,7 @@ export const StickyNav: React.FC<StickyNavProps> = ({
             aria-label="Lounge Music Player"
             title={isPlaying ? `Now Playing: ${currentSong.title}` : 'Play Cafe Lounge Music'}
           >
-            <Music className={`w-4 h-4 ${isPlaying ? 'animate-bounce' : ''}`} />
+            <Music className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isPlaying ? 'animate-bounce' : ''}`} />
             {isPlaying && (
               <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -75,31 +75,31 @@ export const StickyNav: React.FC<StickyNavProps> = ({
 
           <button
             onClick={onOpenSearch}
-            className="w-9 h-9 rounded-full bg-[var(--theme-pill-bg)] text-[var(--theme-text)] flex items-center justify-center hover:opacity-80 active:scale-95 transition-all shadow-xs"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[var(--theme-pill-bg)] text-[var(--theme-text)] flex items-center justify-center hover:opacity-80 active:scale-95 transition-all shadow-xs"
             aria-label="Search Menu"
             title="Search dishes, ingredients..."
           >
-            <Search className="w-4 h-4" />
+            <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </button>
 
           <button
             onClick={onOpenPayQR}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--theme-primary)] text-white text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-sm"
+            className="h-8 px-2.5 sm:h-9 sm:px-3 rounded-full bg-[var(--theme-primary)] text-white flex items-center justify-center gap-1 shadow-sm active:scale-95 hover:opacity-90 transition-all cursor-pointer"
             aria-label="Pay Now via QR"
+            title="Pay Now via Counter QR"
           >
             <QrCode className="w-3.5 h-3.5" />
-            <span className="hidden xs:inline">Pay QR</span>
-            <span className="xs:hidden">Pay</span>
+            <span className="text-[11px] sm:text-xs font-semibold">Pay</span>
           </button>
 
           {onOpenWifiQR && (
             <button
               onClick={onOpenWifiQR}
-              className="w-9 h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 active:scale-95 transition-all shadow-xs border border-blue-100"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 active:scale-95 transition-all shadow-xs border border-blue-100"
               title="Scan QR for Free WiFi"
               aria-label="WiFi QR Code"
             >
-              <Wifi className="w-4 h-4" />
+              <Wifi className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
           )}
         </div>

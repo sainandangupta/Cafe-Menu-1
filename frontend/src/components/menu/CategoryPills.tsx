@@ -40,7 +40,7 @@ export const CategoryPills: React.FC<CategoryPillsProps> = ({
   }, [activeCategory, containerRef]);
 
   return (
-    <div className="sticky top-[102px] z-30 w-full glass-panel border-b border-black/5 py-2 transition-all select-none">
+    <div className="sticky top-[92px] sm:top-[102px] z-30 w-full max-w-full overflow-hidden glass-panel border-b border-black/5 py-2 transition-all select-none">
       <div className="max-w-5xl mx-auto px-3 relative flex items-center gap-2">
         {/* Left Pinned: Veg Only Quick Toggle Dock */}
         <div className="flex-shrink-0 flex items-center pr-2 border-r border-black/10 dark:border-white/10">
